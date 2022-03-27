@@ -1,0 +1,54 @@
+<%- include('./common/head2.ejs') %> <%- include('./common/nav.ejs') %>
+<body>
+  <header>
+    <nav></nav>
+  </header>
+  <main>
+    <section>
+      <p style="text-align: center">قم بتسجيل الدّخول في البداية</p>
+      <div class="btn-container">
+        <a href="/login" type="button" class="btnz">Login</a>
+        <a href="/signup" type="button" class="btnz">sign up</a>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    section {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+    }
+    .text {
+      font-size: 2.5em;
+      color: #038a5b;
+      margin-bottom: -25vh;
+    }
+    .btn-container {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      margin-top: -45vh;
+    }
+    .btnz {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      font-size: 2em;
+      margin: 20px;
+      width: 9em;
+      border-style: none;
+      color: #fff;
+      background-color: #05cb87;
+      padding: 10px;
+      transition: all 200ms ease-in-out;
+    }
+    .btnz:hover {
+      transform: scale(1.2, 1.2);
+      background-color: #038a5b;
+    }
+  </style>
+</body>

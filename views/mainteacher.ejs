@@ -1,0 +1,66 @@
+<%- include('./common/head2'); -%> <%- include('./common/nav'); -%> <%-
+include('./common/push-down'); -%><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sign up-teacher</title>
+    <link rel="stylesheet" href="/css/mainteacher.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="profile" id="profile">
+        <div class="cardprofile">
+          <div class="teacherimage">
+            <% if(user.image != 'no image added') { %>
+            <div
+              class="teacherprofile"
+              style="background-image: url('/profiles/<%= user.image %>')"
+            ></div>
+
+            <% } else { %>
+            <div
+              class="teacherprofile"
+              style="
+                background-image: url('https://i.pinimg.com/564x/93/9c/3c/939c3cd8e8e666319ead92fa5d00b393.jpg');
+              "
+            ></div>
+            <% } %>
+            <div
+              class="teacherprofile"
+              style="background-image: url('/profiles/<%= user.profile %>')"
+            ></div>
+          </div>
+          <div class="teacherdescription">
+            <p><%= user.materials %></p>
+            <h1><%= user.name %></h1>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="questions" id="questions">
+          <div class="cardcommunityquestions">
+            <div class="questionsbackground questionz">أسئلة</div>
+          </div>
+        </div>
+        <div class="questions">
+          <div class="cardcommunityquestions" id="community">
+            <div class="questionsbackground community">المجتمع</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    document.getElementById("questions").onclick = function () {
+      window.location.href = "/questionsforme";
+    };
+    document.getElementById("community").onclick = function () {
+      window.location.href = "/community";
+    };
+    document.getElementById("profile").onclick = function () {
+      window.location.href = "/profile";
+    };
+  </script>
+</html>

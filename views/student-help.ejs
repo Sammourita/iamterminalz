@@ -1,0 +1,329 @@
+<%- include('./common/head2.ejs') %> <%- include('./common/nav.ejs') %> <%- include('./common/push-down.ejs') %>
+
+<body>
+    <header>
+        <nav>
+
+        </nav>
+    </header>
+    <main>
+        <section>
+          <button class="btn btn-outline-dark" style="width: 100%;" id="view">أودّ الدّراسة مع أحد</button>
+            <div class="form-style form-style-one" id="create" style="display: none;" >
+                <div class="row">
+                   
+                   <div class="col-lg">
+                      <div class="form-input mt-5">
+                         <form action="/community/help/create" method="post">
+                            <label>اختر الاختصاص</label>
+                            <div class="input-items active">
+                               <select name="branch" type="text" placeholder="Active" required>
+                                   <option value="علوم عامّة"> علوم عامة </option>
+                                   <option value="علوم حياة"> علوم حياة </option>
+                                   <option value="إجتماع و إقتصاد"> اجتماع و اقتصاد </option>
+                                   <option value="إنسانيّات"> آداب و انسانيات </option>
+                               </select>
+                               <i class="lni lni-user"></i>
+                            </div>
+                      </div>
+                      <!-- form input -->
+                   </div>
+                   <div class="col-lg">
+                      <div class="form-input mt-5 form-group">
+                            <label>رقم الهاتف</label>
+                            <div class="input-items error">
+                               <input type="tel"  name="number" minlength="8" maxlength="8" required />
+                               <i class="lni lni-user"></i>
+                            </div>
+                            <div class="help-block with-errors"></div>
+                      </div>
+                      <!-- form input -->
+                   </div>
+                   
+                   <div class="col-lg">
+                      <div class="form-input mt-5">
+                            <label>المستوى</label>
+                            <div class="input-items disabled">
+                               <select name="level" type="text" >
+                                <option value="متوسّط">متوسط</option>
+                                   <option value="ضعيف">ضعيف</option>
+                                   <option value="جيّد">جيد</option>
+                                   <option value="متفوّق">متفوق</option>
+                               </select>
+                               <i class="lni lni-user"></i>
+                            </div>
+                      </div>
+                      <!-- form input -->
+                   </div>
+                   <div class="col-lg">
+                    <div class="form-input mt-5">
+                          <label>المواد</label>
+                          <div class="input-items success">
+                             <input name="materials" type="text" />
+                             <i class="lni lni-user"></i>
+                          </div>
+                    </div>
+                    <!-- form input -->
+                 </div>
+                 <div class="col-lg" style="display: none;" id="location">
+                  <div class="form-input mt-5">
+                        <label>:مكان السّكن</label>
+                        <div class="input-items success">
+                           <input name="location" type="text" />
+                           <i class="lni lni-user"></i>
+                        </div>
+                  </div>
+                  <!-- form input -->
+               </div>
+                   <div class="col-lg">
+                      <div class="form-input mt-5">
+                            <label>طريقة الدّرس</label>
+                            <div class="input-items disabled">
+                               <select name="type" type="text" id="live">
+                                   <option value="أونلاين">(زوم-ميت)أونلاين</option>
+                                   <option  value="مباشر">حضوريا</option>
+                                   <option value="حضوريّا أو أونلاين">لا مشكلة في الإثنين</option>
+                               </select>
+                               <i class="lni lni-user"></i>
+                            </div>
+                      </div>
+                      <!-- form input -->
+                   </div>
+                  
+                </div>
+                <!-- row -->
+
+             <!-- form-style -->
+        </section>
+        <section id="createz" style="display: none;">
+          <div class="submit-container">
+            <button  type="submit" style=" width: 40%;" class="btn btn-outline-dark">إنشاء</button>
+          </form>
+
+          </div>
+        </section>
+
+      </div>
+        <section class="cards-container" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: center;">
+          <% students.forEach(function(student) { %>
+          <div class="card" style="width: 18rem;">
+            <div class="image">
+              <img class="card-img-top" src="https://i.pinimg.com/564x/75/ae/6e/75ae6eeeeb590c066ec53b277b614ce3.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">" alt="Card image cap">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= student.name %></h5>
+              <p style="position: absolute; top: 3%; left: 5%; color: white; background-color: #05CB8A; padding: 8px; border-radius: 20px;box-shadow: 5px 5px 27px -2px rgba(0, 0, 0, 0.302);
+              "><%= student.branch %></p>
+              <p class="card-text"><%= student.materials %></p>
+              <p class="card-text"><%= student.number %></p>
+              <% if (student.type == 'لا مشكلة في الإثنين') { %>
+                <p href="#"  style="border-radius: 20px;">متوفّر للدراسة أونلاين أو حضوريّا</p>
+  
+                <% } if(student.type == 'أونلاين') { %>
+                <p href="#" style="border-radius: 20px;">يفضّل الدّراسة أونلاين</p>
+                <% } else { %>
+                  <p href="#"  style="border-radius: 20px;">يفضّل الدّراسة مباشرة</p>
+                  <% } %>
+              <p class="card-text"> المستوى:<%= student.level %></p>
+              <a href="/users/<%= student.name %>" class="btn btn-outline-success" style="border-radius: 20px;" target="blank"><%= student.name %></a>
+            
+            </div>
+          </div>
+          <% }) %>
+        </section>
+
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
+<style>
+  .card-img-top {
+    border-radius: 20px;
+  }
+  .submit-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+  }
+  .cards-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .card{
+    border-radius: 20px;
+    box-shadow: -1px 35px 67px -16px rgba(0,0,0,0.75);
+    text-align: center;
+    margin: 40px 10px; 
+    transition: all 0.2s ease;
+  }
+  .card:hover{
+    transform: translateY(-10px);
+  }
+  .image{
+    height: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+</style>
+<style>
+
+    .form-group {
+      margin-bottom: 0;
+    }
+    label{
+        font-size: 1.5em!important;
+        width: 100%;
+        text-align: center;
+    }
+    .form-input .help-block {
+      margin-top: 2px;
+    }
+    .row{
+      margin: 0 20px;
+    }
+    input {
+      text-align: center;
+    }
+    .form-input .help-block .list-unstyled li {
+      font-size: 12px;
+      line-height: 16px;
+      color: var(--error);
+    }
+    .form-input label {
+      font-size: 12px;
+      line-height: 18px;
+      color: var(--dark-3);
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+    .form-input .input-items {
+      position: relative;
+    }
+    .form-input .input-items input, .form-input .input-items textarea {
+      width: 100%;
+      height: 44px;
+      border: 2px solid;
+      padding-left: 44px;
+      padding-right: 12px;
+      position: relative;
+      font-size: 16px;
+    }
+    .btn-outline-dark {
+      background-color: #05CB8A;
+      color: #333333;
+      border-radius: 0px;
+      font-weight: bolder;
+      transition: .5s all ease;
+    }
+    .btn-outline-dark:hover {
+      font-size: 25px;
+      background-color: #333333;
+      color: #05CB8A;
+    }
+    .form-input .input-items input:focus, .form-input .input-items textarea:focus {
+      box-shadow: var(--shadow-4);
+    }
+    .form-input .input-items textarea {
+      padding-top: 8px;
+      height: 130px;
+      resize: none;
+    }
+    .form-input .input-items i {
+      position: absolute;
+      top: 11px;
+      left: 13px;
+      font-size: 20px;
+      z-index: 9;
+    }
+    .form-input .input-items.default input, .form-input .input-items.default textarea {
+      border-color: var(--gray-3);
+      color: var(--dark-3);
+    }
+    .form-input .input-items.default input:focus, .form-input .input-items.default textarea:focus {
+      border-color: var(--primary);
+    }
+    .form-input .input-items.default input::placeholder, .form-input .input-items.default textarea::placeholder {
+      color: var(--dark-3);
+      opacity: 1;
+    }
+    .form-input .input-items.default i {
+      color: var(--dark-3);
+    }
+    .form-input .input-items.active input, .form-input .input-items.active textarea {
+      border-color: var(--primary);
+      color: var(--black);
+    }
+    .form-input .input-items.active input::placeholder, .form-input .input-items.active textarea::placeholder {
+      color: var(--black);
+      opacity: 1;
+    }
+    .form-input .input-items.active i {
+      color: var(--primary);
+    }
+    .form-input .input-items.error input, .form-input .input-items.error textarea {
+      border-color: var(--error);
+      color: var(--error);
+    }
+    .form-input .input-items.error input::placeholder, .form-input .input-items.error textarea::placeholder {
+      color: var(--error);
+      opacity: 1;
+    }
+    .form-input .input-items.error i {
+      color: var(--error);
+    }
+    .form-input .input-items.success input, .form-input .input-items.success textarea {
+      border-color: var(--success);
+      color: var(--success);
+    }
+    .form-input .input-items.success input::placeholder, .form-input .input-items.success textarea::placeholder {
+      color: var(--success);
+      opacity: 1;
+    }
+    option {
+      text-align: center;
+      border: 3px solid #333333;
+    }
+    select {
+      border: 2px solid #333333;
+
+    }
+
+    .form-input .input-items.success i {
+      color: var(--success);
+    }
+    .form-input .input-items.disabled input, .form-input .input-items.disabled textarea {
+      border-color: var(--gray-3);
+      color: var(--dark-3);
+    }
+    .form-input .input-items.disabled input::placeholder, .form-input .input-items.disabled textarea::placeholder {
+      color: var(--dark-3);
+      opacity: 1;
+    }
+    .form-input .input-items.disabled i {
+      color: var(--dark-3);
+    }
+    .active, .disabled{
+      display: grid;
+      height: 44px;
+    }
+</style>
+<script>
+  document.getElementById('view').onclick = function() {
+    document.getElementById('create').style.display = 'block';
+    document.getElementById('createz').style.display = 'block';
+    document.getElementById('view').style.display = 'none';
+  }
+  document.getElementById('live').onmouseout = function() {
+    if(document.getElementById('live').value == "أونلاين") {
+      document.getElementById('location').style.display = 'none';
+    }
+    else {
+      document.getElementById('location').style.display = 'block';
+    }
+  }
+
+</script>

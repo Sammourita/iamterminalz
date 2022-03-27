@@ -1,0 +1,368 @@
+<%- include('./common/head2'); -%> <%- include('./common/nav'); -%> <%-
+include('./common/push-down'); -%><head>
+  <link rel="stylesheet" href="/css/calendar.css" />
+</head>
+<body style="background-color: #333333">
+  <div class="fortoday" id="fortoday">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="30"
+      height="30"
+      fill="currentColor"
+      class="bi bi-x-circle-fill"
+      viewBox="0 0 16 16"
+      style="position: absolute; top: 2vh; right: 6vw"
+      id="closetoday"
+    >
+      <path
+        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"
+      />
+    </svg>
+    <h1 style="text-align: center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        fill="currentColor"
+        class="bi bi-list-task"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"
+        />
+        <path
+          d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"
+        />
+        <path
+          fill-rule="evenodd"
+          d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"
+        />
+      </svg>
+      مهمّات اليوم
+    </h1>
+
+    <% tasks.forEach(function(task) { %> <% if(task.day == today){ %>
+    <h1 class="todattask">
+      <a href="<%= branchLow %>/<%= task.lesson %>/" target="_blank"
+        ><%=task.lesson %>
+      </a>
+    </h1>
+    <h1 class="todattask">
+      <a href="shamel/<%= branchLow %>/<%= task.shamel %>/" target="_blank"
+        ><%=task.shamel %></a
+      >
+    </h1>
+    <h1 class="todattask"><%=task.task %></h1>
+    <% } %> <% }) %>
+  </div>
+  <div class="weekdays">
+    <h1 class="weekday">إثنين</h1>
+    <h1 class="weekday">أحد</h1>
+    <h1 class="weekday">سبت</h1>
+    <h1 class="weekday">جمعة</h1>
+    <h1 class="weekday">خميس</h1>
+    <h1 class="weekday">أربعاء</h1>
+    <h1 class="weekday">ثلاثاء</h1>
+  </div>
+  <div class="calendar" id="calendar" dir="rtl">
+    <% for (var i = 1; i <= days; i++ ) { %>
+    <div class="dayzz">
+      <span
+        class="<>%= i %>"
+        style="
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+        "
+        id="<%= i %>"
+      >
+        <h1 class="day"><%= i %></h1>
+      </span>
+    </div>
+    <script>
+      document.getElementById("<%= i %>").onclick = function () {
+        document.getElementById(
+          "taskforaday"
+        ).innerText = `<% tasks.forEach(function(task) { %> <% if(task.day == i){ %>
+        
+        <%=task.lesson %><%=task.shamel %><%=task.task %>
+        <% } %> <% }) %>`;
+      };
+    </script>
+    <% } %>
+  </div>
+  <% if(today >= 8) { %>
+  <script>
+    window.onload = function () {
+      let todayzzzzz = document.getElementById("<%= today %>" - 7);
+      todayzzzzz.scrollIntoView();
+      document.getElementById("<%= today %>").style.backgroundColor = "#05cb87";
+
+      document.getElementById("<%= today %>").style.boxShadow =
+        "inset 0px 0px 20px #333333";
+    };
+  </script>
+  <% } else { %> window.onload = function () { let todayzzzzz =
+  document.getElementById("<%= today %>"); todayzzzzz.scrollIntoView();
+  document.getElementById("<%= today %>").style.backgroundColor = "#05cb87";
+  document.getElementById("<%= today %>").style.boxShadow = "inset 0px 0px 20px
+  #333333"; }; <% } %>
+
+  <div class="addLesson" id="addLesson">
+    <p style="text-align: center; font-size: 25px; color: #005235">قم بإضافة</p>
+    <div class="options" id="options" style="margin-top: 2vh">
+      <button class="btn btn-outline-dark" id="explanations">شرح درس</button>
+      <button class="btn btn-outline-dark" id="shamel">دورات</button>
+      <button class="btn btn-outline-dark" id="task">غير ذلك</button>
+    </div>
+    <h1 id="out" style="position: absolute; top: 5%; right: 5%">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="25"
+        height="25"
+        fill="currentColor"
+        class="bi bi-x-circle-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"
+        />
+      </svg>
+    </h1>
+    <div id="explanationz" style="display: none">
+      <form action="/task" method="post">
+        <select
+          name="lesson"
+          id="cars"
+          style="
+            width: 100%;
+            text-align: center;
+            background-color: #141a25;
+            color: white;
+          "
+        >
+          <% lessons.forEach(function(lesson) { %>
+          <option
+            name="lesson"
+            value="<%= lesson.material %>/<%= lesson.lessonName %>"
+          >
+            <%= lesson.material %>-<%= lesson.lessonName %>
+          </option>
+          <% }) %>
+        </select>
+        <input
+          type="number"
+          id="dayz"
+          name="day"
+          placeholder="day"
+          value=""
+          class="dayinput"
+          style="display: none"
+        />
+        <input
+          type="text"
+          id="month"
+          name="month"
+          value="1"
+          style="display: none"
+          placeholder="month"
+        />
+        <div style="width: 100%; display: flex; justify-content: center">
+          <button type="submit" class="btn-hover color-8">إضافة</button>
+        </div>
+      </form>
+    </div>
+    <div id="shamelz" style="display: none">
+      <form action="/task" method="post">
+        <select
+          name="shamel"
+          id="cars"
+          style="
+            width: 100%;
+            text-align: center;
+            background-color: #141a25;
+            color: white;
+          "
+        >
+          <% shamels.forEach(function(shamel) { %>
+          <option
+            name="lesson"
+            value="<%= shamel.material %>/<%= shamel.year %>"
+          >
+            <%= shamel.material %> - <%= shamel.year %>
+          </option>
+          <% }) %>
+        </select>
+        <input
+          type="number"
+          id="dayzz"
+          name="day"
+          placeholder="day"
+          value=""
+          class="dayinput"
+          style="display: none"
+        />
+        <input
+          type="text"
+          id="month"
+          name="month"
+          value="1"
+          style="display: none"
+          placeholder="month"
+        />
+        <div style="width: 100%; display: flex; justify-content: center">
+          <button type="submit" class="btn-hover color-8">إضافة</button>
+        </div>
+      </form>
+    </div>
+    <div id="tasks" style="display: none">
+      <form action="/task" method="post">
+        <input
+          type="text"
+          name="task"
+          placeholder="task"
+          style="
+            width: 80%;
+            margin-left: 10%;
+            text-align: center;
+            border-radius: 20px;
+            height: 8vh;
+          "
+        />
+        <input
+          type="number"
+          id="dayzzz"
+          name="day"
+          placeholder="day"
+          value=""
+          class="dayinput"
+          style="display: none"
+        />
+        <input
+          type="text"
+          id="month"
+          name="month"
+          value="1"
+          style="display: none"
+          placeholder="month"
+        />
+        <div style="width: 100%; display: flex; justify-content: center">
+          <button type="submit" class="btn-hover color-8">إضافة</button>
+        </div>
+      </form>
+    </div>
+    <div>
+      <div id="taskforaday" class="taskforaday"></div>
+    </div>
+  </div>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="30"
+    height="30"
+    fill="currentColor"
+    class="bi bi-calendar-event"
+    viewBox="0 0 16 16"
+    id="btingtoday"
+  >
+    <path
+      d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"
+    />
+    <path
+      d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
+    />
+  </svg>
+  <!--<% tasks.forEach(function(task) { %> <% if(task.day == today){ %>
+  <a target="_blank" href="/<%= branchLow %>/<%= task.lesson %>/calendar">
+    <%= task.lesson %>
+  </a>
+  <% } %> <% }) %> -->
+</body>
+
+<style>
+  .btn-outline-dark {
+    margin-top: 5vh;
+    margin: 5px;
+    font-size: 2vw;
+  }
+  @media only screen and (max-width: 600px) {
+    .btn-outline-dark {
+      font-size: 4vw;
+    }
+  }
+  @media only screen and (max-width: 300px) {
+    .btn-outline-dark {
+      font-size: 2.5vw;
+    }
+  }
+</style>
+<script>
+  document.getElementById("out").onclick = function () {
+    document.getElementById("addLesson").style.display = "none";
+    document.getElementById("explanationz").style.display = "none";
+    document.getElementById("shamelz").style.display = "none";
+    document.getElementById("tasks").style.display = "none";
+  };
+  var days = document.getElementsByClassName("dayzz");
+  var inputday = document.getElementsByClassName("dayinput");
+  var selects = document.querySelectorAll("select");
+  var lessons = document.getElementsByName("lesson");
+  const d = new Date();
+  let monthz = d.getMonth() + 1;
+  function lessonfunction(lesson) {
+    console.log(this.value + "dayyy");
+  }
+  for (i = 0; i < selects.length; i++) {
+    selects[i].addEventListener("focusout", function () {
+      lessons.forEach(lessonfunction);
+    });
+  }
+  for (i = 0; i < days.length; i++) {
+    days[i].addEventListener("click", function () {
+      document.getElementById("dayz").value = this.innerText;
+      document.getElementById("dayzz").value = this.innerText;
+      document.getElementById("dayzzz").value = this.innerText;
+      document.getElementById("addLesson").style.display = "block";
+      document.getElementById("explanations").style.display = "block";
+      document.getElementById("shamel").style.display = "block";
+      document.getElementById("task").style.display = "block";
+
+      console.log(this.innerText);
+    });
+  }
+  document.getElementById("explanations").onclick = function () {
+    console.log("test");
+    document.getElementById("shamel").style.display = "none";
+    document.getElementById("task").style.display = "none";
+    document.getElementById("explanationz").style.display = "block";
+  };
+  document.getElementById("shamel").onclick = function () {
+    console.log("test");
+    document.getElementById("explanations").style.display = "none";
+    document.getElementById("task").style.display = "none";
+    document.getElementById("shamelz").style.display = "block";
+  };
+  document.getElementById("task").onclick = function () {
+    console.log("test");
+    document.getElementById("explanations").style.display = "none";
+    document.getElementById("tasks").style.display = "block";
+    document.getElementById("shamel").style.display = "none";
+  };
+</script>
+<script>
+  document.getElementById("closetoday").onclick = function () {
+    document.getElementById("fortoday").style.display = "none";
+  };
+  document.getElementById("btingtoday").onclick = function () {
+    document.getElementById("fortoday").style.display = "block";
+  };
+  function uploadbutton() {
+    console.log("test");
+  }
+  document.getElementById("close").onclick = function () {
+    document.getElementById("option").style.display = "none";
+  };
+</script>
+<script></script>

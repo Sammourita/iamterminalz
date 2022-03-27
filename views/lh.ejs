@@ -1,0 +1,174 @@
+<%- include('./common/head2'); -%> <%- include('./common/nav'); -%> <%-
+include('./common/push-down'); -%>
+<div class="main">
+<div class="card" >
+    <div class="card-body">
+      <h5 class="card-title">Economics</h5>
+      <p class="card-text">إقتصاد-إجتماع و إقتصاد</p>
+      <a href="/lh/economics" class="btn">شروحات</a>
+      <a href="/shamel/es/economics" class="btn ">دورات</a>
+
+    </div>
+  </div>
+<div class="card" >
+    <div class="card-body">
+      <h5 class="card-title">Sociology</h5>
+      <p class="card-text">إجتماع-إجتماع و إقتصاد</p>
+      <a href="/#" class="btn">Soon</a>
+      <a href="/shamel/es/sociology" class="btn ">دورات</a>
+
+    </div>
+  </div>
+  <div class="card" >
+    <div class="card-body">
+      <h5 class="card-title">Physics</h5>
+      <p class="card-text">فيزياء-إجتماع و إقتصاد</p>
+      <a href="/lh/physics" class="btn ">شروحات</a>
+      <a href="/shamel/es/physics" class="btn ">دورات</a>
+
+    </div>
+  </div>
+<div class="card" >
+    <div class="card-body">
+      <h5 class="card-title">Biology</h5>
+      <p class="card-text">بيولوجي-إجتماع و إقتصاد</p>
+      <a href="/lh/Biology" class="btn">شروحات</a>
+      <a href="/shamel/es/biology" class="btn ">دورات</a>
+
+    </div>
+  </div>
+<div class="card" >
+    <div class="card-body">
+      <h5 class="card-title">Mathematics</h5>
+      <p class="card-text">رياضيّات-إجتماع و إقتصاد</p>
+      <a href="/lh/math" class="btn">شروحات</a>
+      <a href="/shamel/es/math" class="btn ">دورات</a>
+
+    </div>
+  </div>
+
+<div class="card" >
+    <div class="card-body">
+      <h5 class="card-title">Chemistry</h5>
+      <p class="card-text">كيمياء-إجتماع و إقتصاد</p>
+      <a href="/lh/chemistry" class="btn ">شروحات</a>
+      <a href="/shamel/es/chemistry" class="btn ">دورات</a>
+
+    </div>
+  </div>
+<div class="card" >
+    <div class="card-body">
+      <h5 class="card-title">اللّغة العربيّة</h5>
+      <p class="card-text">اللغة العربية-إجتماع و إقتصاد</p>
+      <a href="/lh/arabic" class="btn ">شروحات</a>
+      <a href="/shamel/es/arabic" class="btn ">دورات</a>
+
+    </div>
+  </div>
+<div class="card" >
+    <div class="card-body">
+      <h5 class="card-title">English</h5>
+      <p class="card-text">اللغة الأجنبية-إجتماع و إقتصاد</p>
+      <a href="/lh/english" class="btn ">شروحات</a>
+      <a href="/shamel/es/english" class="btn ">دورات</a>
+
+    </div>
+  </div>
+<div class="card" >
+    <div class="card-body">
+      <h5 class="card-title">جغرافيا</h5>
+      <p class="card-text">جغرافيا-إجتماع و إقتصاد</p>
+      <a href="/lh/geography" class="btn btn-outline-dark">شروحات</a>
+      <a href="/shamel/es/geography" class="btn ">دورات</a>
+
+    </div>
+  </div>
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">تربية وطنيّة</h5>
+      <p class="card-text">تربية وطنيّة-إجتماع و إقتصاد</p>
+      <a href="/lh/civilization" class="btn">شروحات</a>
+      <a href="/shamel/es/civilization" class="btn ">دورات</a>
+
+    </div>
+  </div>
+<div class="card" >
+    <div class="card-body">
+      <h5 class="card-title">فلسفة</h5>
+      <p class="card-text">فلسفة-إجتماع و إقتصاد</p>
+      <a href="/lh/philosophy" class="btn">شروحات</a>
+      <a href="/shamel/es/philosophy" class="btn ">دورات</a>
+
+    </div>
+  </div>
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">تاريخ</h5>
+      <p class="card-text">تاريخ-إجتماع و إقتصاد</p>
+      <a href="/lh/history" class="btn ">شروحات</a>
+      <a href="/shamel/es/history" class="btn ">دورات</a>
+
+    </div>
+  </div>
+</div>
+<% if(typeof user != 'undefined') { %>
+    <a href=""> You are not logged in</a>
+    <% } %>
+
+<style>
+    .main {
+        width: 100%;
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-right: 5%;
+
+    }
+    .buttonsz {
+        color: white;
+        transition: all .5s ease;
+    }
+    .card {
+        margin: 5px;
+        transition: .5s all ease;
+        box-shadow: 0px 0px 10px black;
+        width: 16rem;
+        height: max-content;
+    }
+    .card:hover {
+        background-color: #141A25;
+        transform: scale(1.2);
+        z-index: 1;
+        box-shadow: 0px 0px 40px black;
+        color: white;
+    }
+    .buttonsz:hover {
+        transform: scale(1.6) skew(10deg);
+        color: lightblue;
+    }
+    .material {
+        box-shadow: 0px 0px 20px black;
+        width: 30vh;
+        height: 150px;
+        border-radius: 10px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+        background-color: #141A25;
+    }
+    .btn {
+        border: 2px solid #47A29F;
+        background-color: transparent;
+        color: #47A29F;
+        margin-top: 10px;
+        transform: .2s all ease;
+    }
+    .btn:hover {
+        background-color: #47A29F;
+        color: #141A25;
+    }
+</style>
+

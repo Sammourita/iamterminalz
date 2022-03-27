@@ -1,0 +1,78 @@
+<%- include('./common/head2'); -%> <%- include('./common/nav'); -%> <%-
+include('./common/push-down'); -%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/materials.css" />
+  </head>
+  <body>
+    <a
+      href="/shamel/<%= branch %>/<%= material %>/"
+      class="shamel btn btn-outline-dark"
+      style="width: 90%; margin-bottom: 5vh"
+      >دورات الشّامل</a
+    >
+
+    <div class="main">
+      <% lessons.forEach(function(lesson) { %>
+      <div class="glass-block card">
+        <div class="card-body">
+          <h5 class="card-title"><%= lesson.lessonName %></h5>
+          <p class="card-text"><%= lesson.branch %>-<%= lesson.material %></p>
+        </div>
+        <div class="buttonsdiv">
+          <a
+            style="box-shadow: 0px 2px #333333"
+            href="/<%= branch %>/<%= material %>/<%= lesson.lessonName %>"
+            class="btn btnz"
+            >شروحات</a
+          >
+          <a
+            style="box-shadow: 0px 2px #333333"
+            href="/<%= branch %>/<%= material %>/<%= lesson.lessonName %>/questions"
+            class="btn btnz"
+            >إسأل</a
+          >
+        </div>
+      </div>
+
+      <% }) %>
+    </div>
+  </body>
+  <style>
+    .card {
+      width: 55vh;
+    }
+    .shamel {
+      width: 90%;
+      margin-left: 5%;
+      height: 8vh;
+      display: flex;
+      font-size: 35px;
+      margin-bottom: 0;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+      background-color: #333333;
+    }
+    .main {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .btnz {
+      width: 20vh;
+      margin: 2px;
+    }
+    .buttonsdiv {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</html>

@@ -1,0 +1,15 @@
+
+/* footer */
+.footer .row{
+	--bs-gutter-x: 0;
+}
+.footer {
+	background-color: rgba(255, 255, 255, 0.59);
+	padding-top: 20vh;
+	padding-right: 316px;
+	height: 400px;
+}
+
+.footer-list {
+	list-style-type: none;
+}

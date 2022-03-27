@@ -1,0 +1,132 @@
+<%- include('./common/head2'); -%> <%- include('./common/nav'); -%> <%-
+include('./common/push-down'); -%>
+<h1
+  style="
+    text-align: center;
+    text-shadow: 1px 2px 1px black;
+    margin-top: -15px;
+    font-size: 25px;
+  "
+>
+  مساحتك الخاصّة للتعبير
+</h1>
+<p style="text-align: center">
+  مساحتك لتعبّر عن كل ما في داخلك
+  <br />
+  شاركنا قصص مررت بها إجتماعيا و أكاديميّا خلال سنواتك الدّراسيّة
+  <br />
+  الهدف نشر الوعي حول بعض القضايا و مشاركة التّجارب مع بعضنا البعض
+</p>
+<button
+  id="button"
+  class="btn btn-outline-light"
+  style="
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 10px;
+    box-shadow: 0px 0px 10px black;
+  "
+>
+  إضغط هنا للتّعبير
+</button>
+<form action="/express" method="post">
+  <p id="textz" style="text-align: center; display: none">إختر الموضوع العام</p>
+
+  <select
+    id="type"
+    name="type"
+    id="cars"
+    style="
+      width: 80%;
+      margin-left: 10%;
+      text-align: center;
+      background-color: #141a25;
+      color: white;
+      display: none;
+    "
+  >
+    <option value="إجتماعيّة">إجتماعيّة</option>
+    <option value="إجتماعيّة">أكاديميّة</option>
+  </select>
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      aria-describedby="emailHelp"
+      placeholder="العنوان"
+      name="title"
+      dir="rtl"
+      lang="ar"
+      style="display: none"
+    />
+  </div>
+  <div class="form-group">
+    <textarea
+      class="form-control"
+      id="text"
+      rows="3"
+      dir="rtl"
+      lang="ar"
+      placeholder="صلب الموضوع"
+      style="display: none"
+      name="description"
+    ></textarea>
+  </div>
+  <button
+    id="submit"
+    type="submit"
+    class="btn btn-outline-light"
+    style="
+      width: 40%;
+      margin-left: 30%;
+      box-shadow: 0px 0px 10px black;
+      display: none;
+    "
+  >
+    أنشر
+  </button>
+</form>
+<% expressions.forEach(function(express) { %>
+<div class="card">
+  <div class="card-header" style="margin-right: 3%">
+    <%= express.title %> - مشاركة <%= express.type %>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0" style="margin-right: 5%">
+      <p><%= express.description %></p>
+      <h1 style="text-align: center"></h1>
+      <a href="/users/<%= express.username %>"><%= express.username %></a>
+    </blockquote>
+  </div>
+</div>
+<% }) %>
+<style>
+  .card {
+    background-color: #141a25;
+    text-align: right;
+    color: white;
+  }
+  .card-body {
+    background-color: #182f5b;
+  }
+
+  .form-group {
+    width: 80%;
+    margin-left: 10%;
+  }
+  textarea {
+    margin-left: 0.5%;
+    box-shadow: 0px 0px 10px black;
+  }
+</style>
+<script>
+  document.getElementById("button").onclick = function () {
+    console.log("tets");
+    document.getElementById("title").style.display = "block";
+    document.getElementById("textz").style.display = "block";
+    document.getElementById("text").style.display = "block";
+    document.getElementById("type").style.display = "block";
+    document.getElementById("submit").style.display = "block";
+  };
+</script>

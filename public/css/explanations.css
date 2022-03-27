@@ -1,0 +1,56 @@
+* {
+	box-sizing: border-box;
+}
+@font-face {
+	font-family: Dubai;
+	src: url("../fonts/DubaiFontWebFont/webfonts/DubaiW23-Regular.eot");
+	src: url("../fonts/DubaiFontWebFont/webfonts/DubaiW23-Regular.eot?#iefix")
+			format("embedded-opentype"),
+		url("../fonts/DubaiFontWebFont/webfonts/DubaiW23-Regular.woff2")
+			format("woff2"),
+		url("../fonts/DubaiFontWebFont/webfonts/DubaiW23-Regular.woff")
+			format("woff"),
+		url("../fonts/DubaiFontWebFont/webfonts/DubaiW23-Regular.ttf")
+			format("truetype");
+}
+@font-face {
+	font-family: Ara Jozoor;
+	src: url("../fonts/ara-jozoor-regular/Ara\ Jozoor\ Regular.ttf")
+		format("truetype");
+}
+:root {
+	--bg-main: #e2e1e1;
+	--bg-sec: #89bfad75;
+	--default: #ffff;
+	--default-50: #ffffff66;
+	--text-main: #333333;
+	--text-sec: #05cb87;
+	--bg2: #05cb8694;
+	--text-tri: #ff014d;
+}
+body {
+	font-family: "Montserrat", sans-serif;
+	background-image: url("../images/homebg.png");
+	color: var(--text-main);
+}
+.card-container {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 18rem;
+	height: 60%;
+	padding: 3%;
+}
+.card-heading {
+	font-size: 60px;
+	font-weight: bold;
+}
+.text-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.card-text {
+	font-size: 20px;
+}

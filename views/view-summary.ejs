@@ -1,0 +1,307 @@
+
+<%- include('./common/head2'); -%> <%- include('./common/nav'); -%> <%-
+include('./common/push-down'); -%>
+<body>
+    
+<% for(var i=0; i < summary.endorses.length  ; i++) {%>
+    <h5 style="text-align: center;">
+    Endorsed By <a href="/users/<%= summary.endorses[i].username %>"> <%= summary.endorses[i].username %></a>
+</h5>
+ <% } %>
+  <% if(summary.endorses == '') { %>
+         <form action="/summary/<%= summary.id %>/endorse" method="post">
+             <button type="submit" class="btn endorse btn-outline-dark">قم بإضافة الميثاقيّة للشّرح التّالي</button>
+         </form>
+         <% } %>
+       
+<main class="main-container">
+    <section class="container">
+        <section class="title">
+            <div class="lesson">
+                <span><%= summary.branch %></span>&ThinSpace;-&ThinSpace;<span><%= summary.lesson %></span>
+            </div>
+            <div class="tags">
+            <% for(var i=0; i < summary.imageNames.length  ; i++) {%>
+                <% if(summary.imageNames[i].tag != null) { %>
+            <a class="tag" href="#<%= summary.imageNames[i].tag %>">    <%= summary.imageNames[i].tag %> </a>
+                    <% } %>
+        <% } %>
+    </div>
+            <div class="by">
+                <span>By:</span><a href="/users/<%= summary.createdBy %>" style="color: #05cb87;">&ThickSpace;<%= summary.createdBy %></a>
+            </div>
+        </section>
+
+        <% for(var i=0; i < summary.imageNames.length  ; i++) {%>
+            <form id="<%= summary %>" action="/summary/<%= summary.id %>/<%= summary.imageNames[i].imageName %>/tag" method="post">
+        <input name="tag"  type="text" placeholder="tag">
+
+                <button value='<%= summary.id %>' type="submit">add tag</button>
+            </form> 
+            <div>
+        
+    </div>
+                   
+
+                <%= summary.imageNames[i] %>
+                
+                <img  id="<%= summary.imageNames[i].tag %>" src="/summaries/<%= summary.imageNames[i].imageName %>" class="imgz" alt="image" loading="lazy" style="width: 80%; margin-left: 10%; margin-right: 10%; margin-bottom: 3vh;">
+                <script>
+                    document.getElementById('<%= summary.imageNames[i].tag %>').onclick = function() {
+                        document.getElementById('<%= summary.imageName %>').style.transition = '.5s all ease';
+                        document.getElementById('<%= summary.imageName %>').style.margin = '0';
+                        document.getElementById('<%= summary.imageName %>').style.marginRight = '0';
+                        document.getElementById('<%= summary.imageName %>').style.marginLeft = '0';
+                        document.getElementById('<%= summary.imageName %>').style.width = '100%';
+                        document.getElementById('<%= summary.imageName %>').style.width = '100%';
+                        console.log('عجبك الزوم؟')
+                    }
+                    document.getElementById('<%= summary.imageName %>').onmouseout = function() {
+                            document.getElementById('<%= summary.imageName %>').style.marginLeft = '10%';
+                            document.getElementById('<%= summary.imageName %>').style.width = '80%';
+                        }
+                        
+                        
+                    </script>
+                    
+                <% } %>
+        <br>
+        <hr>
+        <br>
+        <h4 style="text-align: center;">
+            <%= summary.material %> : أساتذة في مادّة 
+        </h4>
+        <div class="main">
+            <% if(teachers.length != 0) { %>
+                <% teachers.forEach(function(teacher) { %>
+                    <div class="card" style="width: 18rem; overflow: hidden;">
+                        <% if( teacher.image === 'no image added') { %>
+                            <img class="card-img-top" src="https://i.pinimg.com/564x/93/9c/3c/939c3cd8e8e666319ead92fa5d00b393.jpg" alt="Card image cap" style="width: 100%; border-radius: 10px; box-shadow: none; margin-left: 0; margin: 0;">
+                        <% } else { %>
+                            <img class="card-img-top" src="/profiles/<%= teacher.image %>" alt="Card image cap" style="width: 100%; border-radius: 10px; box-shadow: none; margin-left: 0; margin: 0;">
+                
+                            <% } %>
+                        <div class="card-body">
+                          <p class="card-text"><%= teacher.username %></p>
+                          <p class="card-text"><%= teacher.materials %></p>
+                          <a href="/teachers/<%= teacher.username %>" class="btn btn-outline-dark">View Profile</a>
+                          <p class="card-text">points: <%= teacher.points %></p>
+                        </div>
+                      </div>
+                <% }) %>
+               
+                <% } else { %>
+                    <H1 style="color: black;">
+                        no teachers on our platform teaches this material,sorry
+                    </H1>
+        <% } %>
+        </div>
+        <br>
+        <hr>
+        <div>comment:</div>
+        <form id="form">
+            <input type="text" placeholder="Comment Here" class="textbox" name="comment" id="input">
+            <button  class="btn btn-outline-dark">Comment</button>
+        </form>
+        <section class="comment">
+
+        <ul id="messages">
+            <% comments.forEach(function(comment) { %>
+                <li>
+                    <div class="single-comment">
+                        <a style="color: #05cb87;">@<%= comment.username %></a>
+                        <div><%= comment.comment %></div>
+                    </div>
+                             </li>
+            <% }) %>
+        </ul>
+        </section>
+       
+</main>
+</body>
+</html>
+<style>
+body {
+    width: 100vw;
+    overflow-x: hidden;
+}
+.main-container{
+    display: grid;
+    width: 95vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .card {
+        box-shadow: 1px 41px 44px -17px rgba(0, 0, 0, 0.75);
+        border-radius: 20px;
+        transition: .5s all ease;
+
+    }
+
+  .card:hover {
+    transform: translateY(-20px);
+    box-shadow: 1px 57px 52px -4px rgba(0, 0, 0, 0.527);
+  }
+    img {
+        border-radius: 20px;
+
+    }
+    
+
+.container{
+    display: grid;
+    width: 95vw;
+    justify-content: center;
+}
+
+.lesson{
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vw;
+    background-color: #05cb87;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(24, 24, 24, 0.734);
+    font-family: sans-serif;
+    padding: 5px 0;
+}
+.by{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    font-family: sans-serif;
+}
+.comment{
+    font-size: 1.5em;
+    font-family: sans-serif;
+    font-weight: 550;
+
+}
+.title{font-weight: 550;}
+@media screen and (max-width: 600px) {
+    .title{
+        font-size: 10px;
+        font-weight: 400;
+    }
+    .comment{
+        font-weight: 400;
+        font-size: 16px;
+    }
+    .main-container, .container, .textbox{
+        width: 100vw;
+    }
+    .textbox{
+        font-size: 20px!important;
+        font-weight: 400!important;
+    }
+}
+.single-comment{margin: 10px 0}
+.textbox{
+    width: 90vw;
+    height: 50px;
+    font-size: 25px;
+    border-style: none;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: sans-serif;
+    font-weight: 550;
+}
+a:hover{
+    cursor: pointer;
+}
+img{
+    width: 95vw;
+    transform: scaleY(1.0045)
+    }
+.images:hover{
+    box-shadow: 0 0 40px rgba(24, 24, 24, 0.898);
+}
+.comment:last-child{
+    margin-bottom: 10vh;
+}
+.endorse {
+    width: 50%;
+    margin-left: 25%;
+    border-radius: 20px;
+    margin-bottom: 20px;
+
+}
+hr {
+    color: #05cb87;
+}
+.tags {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+.tag {
+    margin: 5px;
+    color: #333333;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 25px;
+    text-decoration: none;
+    background-color: #05cb87;
+    transition: .5s all ease;
+
+}
+.tag:hover {
+    color: white;
+    transform: translateY(10px);
+}
+</style>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script type = text/javascript>
+    var summary = <%-JSON.stringify(summary)%>;
+    var username = "<%=isLoggedIn%>";
+    var form ;
+    var input;
+    var messages;
+    window.addEventListener('load', function () {
+        form = document.getElementById('form');
+        input = document.getElementById('input');
+        messages = document.getElementById('messages');
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            addMessage(username + ": " + input.value);
+            socket.emit("comment", {
+            data: {
+                comment: input.value,
+                summaryId: summary._id,
+                username: username
+            }
+        });
+        input.value = "";
+        return false;
+    }, false);
+    })
+    
+    function addMessage(message) {
+        const li = document.createElement("li");
+        li.innerHTML = message;
+        messages.appendChild(li);
+    }
+    var socket = io.connect('//localhost:5555', {reconnection: false});
+    socket.emit('join', summary._id);
+    socket.on('commented', data => {
+        addMessage(data.username +":"+data.comment) 
+    })
+</script>

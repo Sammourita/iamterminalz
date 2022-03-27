@@ -1,0 +1,174 @@
+/* Needed for every page */
+
+* {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: Dubai;
+  src: url("../fonts/DubaiFontWebFont/webfonts/DubaiW23-Regular.eot");
+  src: url("../fonts/DubaiFontWebFont/webfonts/DubaiW23-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/DubaiFontWebFont/webfonts/DubaiW23-Regular.woff2")
+      format("woff2"),
+    url("../fonts/DubaiFontWebFont/webfonts/DubaiW23-Regular.woff")
+      format("woff"),
+    url("../fonts/DubaiFontWebFont/webfonts/DubaiW23-Regular.ttf")
+      format("truetype");
+}
+@font-face {
+  font-family: Ara Jozoor;
+  src: url("../fonts/ara-jozoor-regular/Ara\ Jozoor\ Regular.ttf")
+    format("truetype");
+}
+:root {
+  --bg-main: #e2e1e1;
+  --bg-sec: #89bfad;
+  --default: #ffff;
+  --default-50: #ffffff9d;
+  --text-main: #333333;
+  --text-sec: #05cb87;
+  --bg2: #05cb8694;
+  --text-tri: #ff014d;
+}
+
+/* Navigation Bar */
+
+.push-down {
+  height: 120px;
+  width: 100%;
+}
+.start-nav {
+  position: fixed;
+  z-index: 10;
+  padding: 0 7vw;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+}
+.start-nav:hover {
+  color: #05cb87;
+}
+.bg-mainColor {
+  background: var(--default-50) 0% 0% no-repeat padding-box;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.bg-mainColor.solid-bg {
+  background: var(--text-main) 0% 0% no-repeat padding-box;
+}
+.solid-bg .navbar-dark .navbar-nav a.nav-link {
+  color: var(--default);
+}
+.solid-bg .navbar-dark .navbar-nav .nav-link.active,
+.solid-bg .navbar-dark .navbar-nav .show > .nav-link {
+  color: var(--text-sec);
+}
+.solid-bg .navbar-dark .navbar-nav a.nav-link:after {
+  background: var(--text-sec);
+}
+.solid-bg .register-button .btn.btn-dark {
+  border-radius: 35px;
+  padding: 0.35em 1.3em;
+  background-color: var(--default);
+  border-color: var(--default);
+  color: var(--text-main);
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.solid-bg .register-button .btn.btn-dark:hover {
+  background-color: var(--text-main);
+  border-color: var(--text-main);
+  color: var(--default);
+  font-style: italic;
+}
+.offcanvas {
+  background-color: var(--text-main);
+}
+.offcanvas-title {
+  color: var(--default);
+}
+.nav-item {
+  padding: 0 21px;
+}
+.navbar-dark .navbar-nav a.nav-link {
+  color: var(--text-main);
+}
+.navbar-dark .navbar-nav a.nav-link:after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  margin: 0 -80px;
+  height: 3px;
+  width: 0;
+  background: var(--text-main);
+  transition-delay: 0.1s;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.5s;
+  transition-property: all;
+  opacity: 1;
+  transform-origin: top;
+  transform-style: preserve-3d;
+}
+.navbar-dark .navbar-nav a.nav-link:hover:after {
+  opacity: 1;
+  width: 90px;
+}
+.navbar-dark .navbar-nav a.nav-link:hover {
+  color: var(--text-sec);
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.navbar-dark .navbar-nav a.nav-link:focus {
+  color: var(--text-sec);
+}
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .show > .nav-link {
+  color: var(--text-sec);
+}
+.register-button .btn.btn-dark {
+  border-radius: 35px;
+  padding: 0.35em 1.3em;
+  background-color: var(--text-main);
+  border-color: var(--text-main);
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.register-button .btn.btn-dark:hover {
+  background-color: var(--default);
+  border-color: var(--default);
+  color: var(--text-main);
+  font-style: italic;
+}
+.nav-brand-logo {
+  width: 50px;
+}
+.navbar-brand img {
+  height: 10vh;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+@media (max-width: 992px) {
+  .navbar-dark .navbar-nav a.nav-link:after {
+    bottom: auto;
+    margin: 20px -80px;
+  }
+  .navbar-dark .navbar-nav a.nav-link {
+    color: var(--default);
+  }
+  .navbar-dark .navbar-nav .nav-link.active,
+  .navbar-dark .navbar-nav .show > .nav-link {
+    color: var(--text-sec);
+  }
+  .navbar-dark .navbar-nav a.nav-link:after {
+    background: var(--text-sec);
+  }
+  .register-button .btn.btn-dark {
+    background-color: var(--default);
+    border-color: var(--default);
+    color: var(--text-main);
+  }
+  .register-button .btn.btn-dark:hover {
+    background-color: var(--text-main);
+    border-color: var(--text-main);
+    color: var(--default);
+  }
+}

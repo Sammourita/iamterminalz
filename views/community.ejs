@@ -1,0 +1,140 @@
+<%- include('./common/head2'); -%> <%- include('./common/nav'); -%> <%-
+include('./common/push-down'); -%>
+<body>
+  <div
+    style="
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    "
+    class="mainz"
+  >
+    <div class="canvas">
+      <div
+        id="help"
+        class="one first"
+        style="
+          background-image: url('https://images.pexels.com/photos/8640133/pexels-photo-8640133.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+        "
+      >
+        مساعدة من طلّاب متوّقين
+      </div>
+    </div>
+    <div class="canvas">
+      <div
+        id="tips"
+        class="one second"
+        style="
+          background-image: url('https://images.pexels.com/photos/261719/pexels-photo-261719.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+        "
+      >
+        نصائح دراسيّة
+      </div>
+    </div>
+    <div class="canvas">
+      <div
+        id="share"
+        class="one second"
+        style="
+          background-image: url('https://essenceofemail.com/wp-content/uploads/2019/09/54-1200x640.png');
+        "
+      >
+        شاركنا تجاربك
+      </div>
+    </div>
+    <div class="canvas">
+      <div
+        id="chat"
+        class="one first"
+        style="
+          background-image: url('https://images.pexels.com/photos/4049992/pexels-photo-4049992.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+        "
+      >
+        دردشة
+      </div>
+    </div>
+  </div>
+</body>
+<style>
+  body {
+    padding-bottom: 5vh;
+  }
+  .canvas {
+    width: 40%;
+    margin: 5vh;
+    height: 40vh;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 2px solid #141a25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .mainz {
+    height: 70vh;
+  }
+  .one {
+    width: 100%;
+    height: 40vh;
+    border-radius: 10px;
+    background-color: transparent;
+    box-shadow: inset 0px -100px 100px black;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 1px 2px #141a25;
+    font-size: 5vh;
+    transition: all 0.5s ease;
+  }
+  .profileimage {
+    background-size: cover;
+    box-shadow: inset 0px -50px 50px black;
+    transform: scale(1.3);
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: 0.5s all ease;
+  }
+  .profileimage:hover {
+    transform: scale(2) skewY(-4deg);
+  }
+  .first:hover {
+    transform: scale(1.35) skewY(-10deg);
+  }
+  .second:hover {
+    transform: scale(1.35) skewY(5deg);
+  }
+  .third:hover {
+    transform: scale(1.35) skewY(10deg);
+  }
+  .one:hover {
+    box-shadow: inset 0px -200px 200px black;
+  }
+  @media only screen and (max-width: 700px) {
+    .canvas {
+      width: 90%;
+    }
+    .one {
+      font-size: 5vw;
+    }
+  }
+</style>
+<script>
+  document.getElementById("help").onclick = function () {
+    window.location.href = "/community/student-help";
+  };
+  document.getElementById("share").onclick = function () {
+    window.location.href = "/community/express";
+  };
+  document.getElementById("chat").onclick = function () {
+    window.location.href = "/community/chat";
+  };
+  document.getElementById("tips").onclick = function () {
+    window.location.href = "/community/tips";
+  };
+</script>

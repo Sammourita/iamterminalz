@@ -1,0 +1,80 @@
+<%- include('./common/head2'); -%> <%- include('./common/nav'); -%>
+<div class="main">
+  <form action="/edit-teacher" method="post">
+    <input
+      type="text"
+      name="materials"
+      value="<%= user.materials %>"
+      placeholder="materials"
+    />
+    <input
+      type="number"
+      name="cost"
+      value="<%= user.price %>"
+      +
+      placeholder="Price"
+    />
+    <br />
+    <input
+      type="text"
+      name="certificate"
+      value="<%= user.certificate %>"
+      placeholder="certiicates"
+    />
+    <input
+      type="text"
+      name="experience"
+      value="<%= user.experience %>"
+      placeholder="years of experience"
+    />
+    <br />
+    <div
+      class="this"
+      style="width: 100%; display: flex; justify-content: center"
+    >
+      <textarea
+        style="
+          box-shadow: 0px 0px 10px black;
+          margin-bottom: 10px;
+          margin-left: 1%;
+          width: 65%;
+        "
+        name="bio"
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      >
+<%= user.bio %></textarea
+      >
+    </div>
+    <button
+      style="width: 50%; margin-left: 25%"
+      class="btn btn-outline-light"
+      mt-2
+      type="submit"
+    >
+      Submit Editing
+    </button>
+  </form>
+</div>
+<style>
+  select {
+    font-size: 20px;
+    margin: 5px;
+  }
+  .main {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media only screen and (max-width: 601px) {
+    .this {
+      display: block;
+    }
+    input {
+      margin-left: 18%;
+    }
+  }
+</style>

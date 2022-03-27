@@ -1,0 +1,20 @@
+<%- include('./head'); -%>
+<div class="divz" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 80vh; background-image: url('https://www.enjpg.com/img/2020/outer-space-background-5.jpg'); background-size: cover;background-repeat: no-repeat;">
+    <h1 style="text-shadow:  0px 2px black;">
+        سيتمّ فتح الدردشة عند الوصول إلى 1000 مستخدم
+    </h1>
+</div>
+
+<%- include('./footer'); -%>
+<style>
+    .divz {
+        margin-top: -8%;
+        box-shadow:inset  0px 0px 200px 100px black;
+    }
+    @media only screen and (max-width: 600px) {
+        .divz {
+            margin-top: -20%;
+            box-shadow:inset  0px 0px 100px 50px black;
+        }
+    }
+</style>

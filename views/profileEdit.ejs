@@ -1,0 +1,43 @@
+<%- include('./common/head2'); -%>
+<div class="main">
+  <form action="/edit-profile" method="post">
+    <input type="password" name="password" value="<%= user.password %>" />
+    <br />
+    <input type="text" name="bio" value="<%= user.bio %>" />
+
+    <select
+      name="branch"
+      id="cars"
+      style="
+        width: 100%;
+        text-align: center;
+        background-color: #141a25;
+        color: white;
+      "
+    >
+      <option value="GS"><%= user.branch %></option>
+      <option value="GS">GS</option>
+      <option value="LS">LS</option>
+      <option value="ES">ES</option>
+      <option value="HS">HS</option>
+    </select>
+
+    <br />
+    <button class="btn btn-outline-light" mt-2 type="submit">
+      Submit Editing
+    </button>
+  </form>
+</div>
+<style>
+  select {
+    font-size: 20px;
+    margin: 5px;
+  }
+  .main {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>

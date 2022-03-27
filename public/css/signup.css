@@ -1,0 +1,108 @@
+* {
+	box-sizing: border-box;
+}
+.signup-container {
+	margin: 12vw;
+/*	margin-top: 20vh;
+	width: 90%;
+	margin-left: 5%;
+	
+}
+input {
+	width: 100%;
+}
+.col {
+	width: 100%;
+}
+.form-control {
+	width: 50%;
+	text-align: center;*/
+}
+.input-container {/*
+	display: flex;
+	text-align: center;*/
+	margin: 10px auto;
+}
+/*
+.col {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.row {
+	width: 100%;
+}
+*/
+.buttons {
+	margin-top: 40px;
+}
+#previous {
+	width: fit-content;
+	padding: 0;
+	margin: 0;
+}
+#next {
+	width: fit-content;
+	padding: 0;
+	margin: 0;
+}
+/*.container-fluid {
+	box-shadow: none;
+}*/
+.my-carousel-item {
+	display: none;
+}
+@media only screen and (min-width: 1200px) and (max-width: 768px) {
+	.signup-container {
+		margin: 8vw;
+	}
+	.input-container {
+		margin: 0 auto;
+	}
+}
+/* Fading animation */
+.my-fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
+	/*animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;*/
+}
+
+@-webkit-keyframes fade {
+	from {
+		opacity: 0.4;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: 0.4;
+	}
+	to {
+		opacity: 1;
+	}
+}
+/*@-webkit-keyframes slide-top {
+	0% {
+	  -webkit-transform: translateY(0);
+			  transform: translateY(0);
+	}
+	100% {
+	  -webkit-transform: translateY(-100px);
+			  transform: translateY(-100px);
+	}
+  }
+  @keyframes slide-top {
+	0% {
+	  -webkit-transform: translateY(0);
+			  transform: translateY(0);
+	}
+	100% {
+	  -webkit-transform: translateY(-100px);
+			  transform: translateY(-100px);
+	}
+  }*/

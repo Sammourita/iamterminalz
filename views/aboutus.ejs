@@ -1,0 +1,188 @@
+<%- include('./common/head2.ejs') %> <%- include('./common/nav.ejs') %> <%- include('./common/push-down.ejs') %>
+
+<header>
+      <nav>
+
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div class="container">
+          <!-- Dhayne -->
+          <div class="profile-card">
+            <div class="cardface">
+              <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 5%; border-bottom: 1px solid black;">
+                <div class="profile-image5"></div>
+              </div>
+              <div class="text-container">
+                <div class="name">أ.حسن دهيني</div>
+                <div class="p-title">Mentor</div>
+              </div>
+            </div>
+            <div class="backface cardface">
+              <div>Mentoring</div>
+            </div>
+          </div>
+          <!-- khaleel -->
+          <div class="profile-card">
+            <div class="cardface">
+              <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 5%; border-bottom: 1px solid black;">
+                <div class="profile-image1"></div>
+              </div>
+              <div class="text-container">
+                <div class="name">خليل سمور</div>
+                <div class="p-title">CEO - FullStack</div>
+              </div>
+            </div>
+            <div class="backface cardface">
+              <div>Changing the way students learn</div>
+              <a href="https://sammourita.github.io/Khalil-Blog" target="_blank">Website</a>
+            </div>
+          </div>
+          <!-- ali abd ghafar -->
+          <div class="profile-card">
+              <div class="cardface">
+              <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 5%; border-bottom: 1px solid black;">
+                <div class="profile-image2"></div>
+              </div>
+              <div class="text-container">
+                <div class="name">علي عبد الغفار</div>
+                <div class="p-title">Front-End</div>
+              </div>
+            </div>
+            <div class="backface cardface">Changing the way students learn</div>
+          </div>
+          <!-- mohammad hammoud -->
+          <div class="profile-card">
+            <div class="cardface">
+              <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 5%; border-bottom: 1px solid black;">
+                <div class="profile-image3"></div>
+              </div>
+              <div class="text-container">
+                <div class="name">محمد حمود</div>
+                <div class="p-title">Back-End</div>
+              </div>
+            </div>
+            <div class="backface cardface">Changing the way students learn</div>
+          </div>
+          <!-- ahmad mohammad -->
+          <div class="profile-card">
+            <div class="cardface">
+              <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 5%; border-bottom: 1px solid black;">
+                <div class="profile-image4"></div>
+              </div>
+              <div class="text-container">
+                <div class="name">احمد محمد</div>
+                <div class="p-title">Designer</div>
+              </div>
+            </div>
+            <div class="backface cardface">Changing the way students learn</div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+
+    </footer>
+    <style>
+
+      .title{
+        display: flex;
+        font-size: 3em;
+        justify-content: center;
+        margin: 30px 0;
+        color: #038a5b;
+        border-bottom: 5px solid #038a5b;
+        border-top: 5px solid #038a5b;
+      }
+      .container{
+        display: flex;
+        width: 100vw;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        perspective: 900px;
+      }
+      .profile-card{
+        display: grid;
+        margin: 20px;
+        transition: 1s ease;
+        border-radius: 5%;
+        border: 1px solid black;
+        background-color: #038a5b;
+        transform-style: preserve-3d;
+        box-shadow: 9px 50px 54px -13px rgba(0,0,0,0.537);
+      }
+      .profile-card:hover, .profile-card:focus{
+        box-shadow: -9px 50px 54px -13px rgba(0,0,0,0.537);
+        transform: rotateY(180deg);
+      }
+      a{
+        color: blue;
+      }
+      .cardface{
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+      }
+      .backface{
+        display: flex;
+        width: 200px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #ddd;
+        font-size: 2em;
+        background-color: #038a5b;
+        border-radius: 5%;
+        transform: rotateY(180deg);
+        position: absolute;
+        height: 100%;
+      }
+      .text-container{
+        display: grid;
+        padding: 0 10px 10px 10px;
+        justify-content: center;
+      }
+      [class*=profile-image]{
+        width: 200px;
+        height: 200px;
+        background-position: center;
+        background-size: cover;
+        transition: 0.2s ease;
+      }
+      .profile-image1{
+        background-size: cover;
+        background-image: url("https://cdn.discordapp.com/attachments/930926523412787233/952945672808706118/4.png");
+      }
+      .profile-image2{
+        background-size: cover;
+        background-image: url("https://cdn.discordapp.com/attachments/930926523412787233/952945673102311516/1.png");
+      }
+      .profile-image3{
+        background-size: cover;
+
+        background-image: url("https://cdn.discordapp.com/attachments/930926523412787233/952945673370738768/2.png");
+      }
+      .profile-image4{
+background-size: cover;
+        background-image: url("https://cdn.discordapp.com/attachments/930926523412787233/952945673731444776/3.png");
+      }
+      .profile-image5{
+        background-image: url("https://i.ibb.co/Zht2gHB/89d1844f-27cc-4411-94f0-3f8666ec7e50.jpg");
+      }
+      .name{
+        display: flex;
+        font-size: 1.5em;
+        color: #ddd;
+        justify-content: center;
+      }
+      .p-title{
+        display: flex;
+        font-size: 1.2em;
+        justify-content: center;
+        color: #ddd;
+      }
+    </style>
+  </body>

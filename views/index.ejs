@@ -1,0 +1,416 @@
+<%- include('./common/head2.ejs') %> <%- include('./common/nav.ejs') %>
+
+<!-- Tiny-slider -->
+
+<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css"
+/>
+
+<!-- CSS StyleSheet -->
+
+<link rel="stylesheet" href="/css/styles.css" />
+
+<body>
+	<section class="header" id="title">
+		<!-- Header -->
+		<div class="header-container">
+			<div class="paper-cta arabic">
+				<div class="d-flex justify-content-center" dir="rtl">
+					<span class="hashtag-quote"><em>#_طريقك_إلى_التفوق</em></span>
+				</div>
+				<br />
+				<h1
+					class="header-heading d-flex justify-content-center container"
+					dir="rtl"
+				>
+					منصة الترمينال التعليمية
+				</h1>
+				<h1
+					class="header-heading d-flex justify-content-center container"
+					dir="rtl"
+				>
+					المجانية الأولى في لبنان
+				</h1>
+				<div
+					class="d-flex justify-content-center cta-in-paper"
+					style="width: 60%; margin-left: 20%"
+				>
+					<a href="/main" class="cta-in-paper-link" dir="rtl">إلقاء_نظرة</a>
+					<a href="/signup" class="cta-in-paper-link" dir="rtl">إنشاء_حساب</a>
+				</div>
+			</div>
+			<div class="video-cta d-flex justify-content-center arabic">
+				<a href="#youtube-video-cta" dir="rtl" class="video-cta-link"
+					><i class="fa-solid fa-circle-play fa-xl video-cta-play-icon"></i>
+					!شـــاهد هذا الفيــديو
+				</a>
+			</div>
+		</div>
+	</section>
+
+  <section class="counter-carousel arabic">
+    <div class="container-fluid counter">
+      <div class="row">
+        <div class="col-md-4 our-numbers">
+          <h1 class="numbers-heading"><%= teachersnumber %></h1>
+          <h2 class="numbers-second-heading"><strong>أستاذ خصوصي</strong></h2>
+        </div>
+        <hr class="counter-mobile-hr" />
+        <div class="col-md-4 our-numbers middle-number-counter">
+          <h1 class="numbers-heading"><%= summaries %></h1>
+          <h2 class="numbers-second-heading"><strong> شرح درس</strong></h2>
+        </div>
+        <hr class="counter-mobile-hr" />
+        <div class="col-md-4 our-numbers">
+          <h1 class="numbers-heading"><%= doc %></h1>
+          <h2 class="numbers-second-heading">
+            <strong> مستخدم موثق</strong>
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="carousel testimonial-carousel">
+      <div class="my-slider arabic">
+        <div class="testimonial-container">
+          <div class="testimonial">
+            <p class="testimonial-paragraph">
+              one لا أستطيع أن أتخيل دراستي بثقة مــــن دون تلخيصــات أنـا
+              ترمينـــال
+            </p>
+          </div>
+        </div>
+
+        <div class="testimonial-container">
+          <div class="testimonial">
+            <p class="testimonial-paragraph">
+              two لا أستطيع أن أتخيل دراستي بثقة مــــن دون تلخيصــات أنـا
+              ترمينـــال
+            </p>
+          </div>
+        </div>
+
+        <div class="testimonial-container">
+          <div class="testimonial">
+            <p class="testimonial-paragraph">
+              three لا أستطيع أن أتخيل دراستي بثقة مــــن دون تلخيصــات أنـا
+              ترمينـــال
+            </p>
+          </div>
+        </div>
+
+        <div class="testimonial-container">
+          <div class="testimonial">
+            <p class="testimonial-paragraph">
+              four لا أستطيع أن أتخيل دراستي بثقة مــــن دون تلخيصــات أنـا
+              ترمينـــال
+            </p>
+          </div>
+        </div>
+
+        <div class="testimonial-container">
+          <div class="testimonial">
+            <p class="testimonial-paragraph">
+              five لا أستطيع أن أتخيل دراستي بثقة مــــن دون تلخيصــات أنـا
+              ترمينـــال
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#testimonial-carousel"
+          data-bs-slide-to="0"
+          class="dot"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#testimonial-carousel"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+          class="dot"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#testimonial-carousel"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+          class="dot"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#testimonial-carousel"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+          class="dot"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#testimonial-carousel"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+          class="dot"
+        ></button>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#testimonial-carousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#testimonial-carousel"
+        data-bs-slide="next"
+        style="right: -15%"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Explanations Examples -->
+
+  <section class="explanations-examples">
+    <div class="container">
+      <h1 class="explanations-examples-heading arabic">
+        أمثلة من شروحات الدروس
+      </h1>
+      <div class="explanations-examples-cards">
+        <div class="row">
+          <div
+            class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft"
+            data-wow-delay="0ms"
+            data-wow-duration="1000ms"
+          >
+            <div class="courses-one__single">
+              <a href="#"
+                ><div
+                  class="courses-one__single-img"
+                  style="height: 43vh; overflow: hidden"
+                >
+                  <img src="/images/Particles.png" alt="" />
+                  <div class="overlay-text">
+                    <p>Featured</p>
+                  </div>
+                </div>
+              </a>
+
+              <div class="courses-one__single-content">
+                <h4 class="courses-one__single-content-title">
+                  <a href="course-details.html">GS-Complex Numbers</a>
+                </h4>
+                <h6 class="courses-one__single-content-name">
+                  Student Mohammad Naim
+                </h6>
+                <div class="courses-one__single-content-review-box">
+                  <div style="margin: auto">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft"
+            data-wow-delay="0ms"
+            data-wow-duration="1000ms"
+          >
+            <div class="courses-one__single">
+              <a href="#"
+                ><div
+                  class="courses-one__single-img"
+                  style="height: 43vh; overflow: hidden"
+                >
+                  <img src="/images/Particles.png" alt="" />
+                  <div class="overlay-text">
+                    <p>Featured</p>
+                  </div>
+                </div>
+              </a>
+
+              <div class="courses-one__single-content">
+                <h4 class="courses-one__single-content-title">
+                  <a href="course-details.html">GS-Complex Numbers</a>
+                </h4>
+                <h6 class="courses-one__single-content-name">
+                  Student Mohammad Naim
+                </h6>
+                <div class="courses-one__single-content-review-box">
+                  <div style="margin: auto">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft"
+            data-wow-delay="0ms"
+            data-wow-duration="1000ms"
+          >
+            <div class="courses-one__single">
+              <a href="#"
+                ><div
+                  class="courses-one__single-img"
+                  style="height: 43vh; overflow: hidden"
+                >
+                  <img src="/images/Particles.png" alt="" />
+                  <div class="overlay-text">
+                    <p>Featured</p>
+                  </div>
+                </div>
+              </a>
+
+              <div class="courses-one__single-content">
+                <h4 class="courses-one__single-content-title">
+                  <a href="course-details.html">GS-Complex Numbers</a>
+                </h4>
+                <h6 class="courses-one__single-content-name">
+                  Student Mohammad Naim
+                </h6>
+                <div class="courses-one__single-content-review-box">
+                  <div style="margin: auto">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft"
+            data-wow-delay="0ms"
+            data-wow-duration="1000ms"
+          >
+            <div class="courses-one__single">
+              <a href="#"
+                ><div
+                  class="courses-one__single-img"
+                  style="height: 43vh; overflow: hidden"
+                >
+                  <img src="/images/Particles.png" alt="" />
+                  <div class="overlay-text">
+                    <p>Featured</p>
+                  </div>
+                </div>
+              </a>
+
+              <div class="courses-one__single-content">
+                <h4 class="courses-one__single-content-title">
+                  <a href="course-details.html">GS-Complex Numbers</a>
+                </h4>
+                <h6 class="courses-one__single-content-name">
+                  Student Mohammad Naim
+                </h6>
+                <div class="courses-one__single-content-review-box">
+                  <div style="margin: auto">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Youtube Video -->
+
+  <section class="video-watching" id="youtube-video-cta">
+    <iframe
+      src="https://www.youtube.com/embed/4DCx78AY95I"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      class="video-watching-video"
+    ></iframe>
+  </section>
+
+  <!-- Our teacher -->
+  <section class="our-teachers">
+    <div class="container">
+      <h1 class="our-teachers-heading arabic">خذ فكرة عن بعض أساتذتنا</h1>
+      <div class="explanations-examples-cards our-teachers-cards">
+        <div class="row">
+          <% teachers.forEach(function(teacher) { %>
+          <div
+            class="col-xl-4 col-lg-6 col-md-6 wow fadeInLeft"
+            data-wow-delay="0ms"
+            data-wow-duration="1000ms"
+          >
+            <div class="courses-one__single">
+              <a href="/teachers/<%= teacher.username %>"
+                ><div
+                  class="courses-one__single-img"
+                  style="height: fit-content; overflow: hidden"
+                >
+				<% if(teacher.image != 'no image added') { %>
+                  <img
+                    src="/profiles/<%= teacher.image %>"
+                    alt=""
+                  />
+				  <% } else {  %>
+					<img
+                    src="https://i.pinimg.com/564x/31/ec/2c/31ec2ce212492e600b8de27f38846ed7.jpg"
+                    alt=""
+                  />
+					<% } %>
+                  <div class="overlay-text">
+                    <p>Top Teacher</p>
+                  </div>
+                </div>
+              </a>
+
+              <div
+                class="courses-one__single-content our-teachers-cards-content"
+              >
+                <h6 class="courses-one__single-content-name matter"><%= teacher.materials %></h6>
+                <h4 class="courses-one__single-content-title">
+                  <a href="course-details.html">@<%= teacher.username %></a>
+                </h4>
+                <h6 class="courses-one__single-content-name experience-years">
+                  Experience years: <%= teacher.experience %>
+                </h6>
+              </div>
+            </div>
+          </div>
+          <% } ) %>
+         
+    </div>
+  </section>
+	<%- include('./common/scripts.ejs') %>
+	<!-- Tiny Slider js -->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+
+	<!-- javascript link -->
+
+	<script src="/js/index.js"></script>
+</body>
+<%- include('./common/footer.ejs') %>

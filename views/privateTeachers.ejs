@@ -1,0 +1,77 @@
+<%- include('./common/head2'); -%> <%- include('./common/nav'); -%> <%-
+include('./common/push-down'); -%>
+<div
+  style="display: flex; justify-content: center; flex-wrap: wrap; width: 100%"
+>
+  <% teachers.forEach(function(teacher) { %>
+
+  <div class="card" style="width: 18rem">
+    <% if(teacher.image != 'no image added') { %>
+    <div style="width: 100%; height: 40vh; overflow: hidden">
+      <img
+        class="card-img-top"
+        src="/profiles/<%= teacher.image %>"
+        alt="Card image cap"
+      />
+    </div>
+    <% } else { %>
+    <img
+      class="card-img-top"
+      src="https://i.pinimg.com/564x/31/ec/2c/31ec2ce212492e600b8de27f38846ed7.jpg"
+      alt="Card image cap"
+    />
+    <% } %>
+    <div class="card-body">
+      <h1 style="color: #333333; font-size: 30px">@<%= teacher.username %></h1>
+      <p class="card-text"><%= teacher.materials %></p>
+      <a
+        href="/teachers/<%= teacher.username %>"
+        class="btn btn-outline-dark"
+        target="_blank"
+        >تصفّح صفحة الأستاذ</a
+      >
+    </div>
+  </div>
+  <% }) %> <% if(!isLoggedIn) { %>
+  <div class="join">
+    <a href="/signup/teacher" class="btn btn-outline-dark btz"
+      >أنشئ حساب أستاذ مجّانا</a
+    >
+  </div>
+  <% } %>
+</div>
+
+<style>
+  .join {
+    margin-bottom: 5vh;
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(5, 203, 135);
+    box-shadow: 1px 41px 44px -17px rgba(0, 0, 0, 0.438);
+  }
+  .btz {
+    transition: 0.5s all ease;
+  }
+  .btz:hover {
+    transform: scale(1.5);
+  }
+  .btn-outline-dark {
+    border-radius: 50px;
+  }
+  .card {
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow: 1px 41px 44px -17px rgba(0, 0, 0, 0.75);
+    transition: all 0.5s ease;
+  }
+  .card-img-top {
+    border-radius: 20px;
+  }
+  .card:hover {
+    transform: translateY(-20px);
+    box-shadow: 1px 57px 52px -4px rgba(0, 0, 0, 0.527);
+  }
+</style>

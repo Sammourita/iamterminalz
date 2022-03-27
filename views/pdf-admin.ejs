@@ -1,0 +1,35 @@
+<%- include('./common/head2'); -%> <%- include('./common/nav'); -%> <%-
+include('./common/push-down'); -%>
+
+<form action="/<%= branch %>/<%= material %>/add" method="post">
+  <input type="text" name="year" placeholder="year" />
+
+  <input type="text" name="shamel" placeholder="name" />
+  <button type="submit">Add</button>
+</form>
+
+<% shamels.forEach(function(shamel) { %>
+<div class="card">
+  <h5 class="card-header"><%= shamel.year %></h5>
+  <div class="card-body">
+    <p class="card-text"><%= shamel.branch %>/<%= shamel.material %></p>
+    <a
+      href="/shamel/<%= shamel.branch %>/<%= shamel.material %>/<%= shamel.year %>"
+      class="btn btn-primary"
+      >View</a
+    >
+  </div>
+</div>
+<% }) %> <% if( branch != 'es') { %> <% shamelz.forEach(function(shamel) { %>
+<div class="card">
+  <h5 class="card-header"><%= shamel.year %></h5>
+  <div class="card-body">
+    <p class="card-text"><%= shamel.branch %>/<%= shamel.material %></p>
+    <a
+      href="/shamel/<%= shamel.branch %>/<%= shamel.material %>/<%= shamel.year %>"
+      class="btn btn-primary"
+      >View</a
+    >
+  </div>
+</div>
+<% }) %> <% } %>

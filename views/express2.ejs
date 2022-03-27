@@ -1,0 +1,146 @@
+<%- include("./common/head2.ejs") %> <%- include("./common/nav.ejs") %> <%-
+include("./common/push-down.ejs") %>
+<title>express</title>
+<link rel="stylesheet" href="/css/express.css" />
+<body lang="ar">
+	<section>
+		<button class="btn btn-outline-dark" style="width: 100%;" id="view">أودّ التّعبير</button>
+		  <div class="form-style form-style-one" id="create" style="display: none;" >
+			  <div class="row">
+				
+			 </div>
+			 <form action="/express" method="post">
+
+				 <div class="col-lg">
+					<div class="form-input mt-5">
+						  <label>نوع المشاركة</label>
+						  <div class="input-items disabled">
+							 <select name="type" type="text" id="live" required>
+								 <option value="تجربة شخصيّة">تجربة شخصيّة[أكاديميّة أو إجتماعيّة]</option>
+								 <option  value="إقتراح">إقتراح للقطاع التعليمي</option>
+								 <option value="إنتقاد">إنتقاد على القطاع التّعليمي</option>
+								 <option value="غير ذلك">غير ذلك[متصل نوعا ما في القطاع التّعليمي]</option>
+							 </select>
+							 <i class="lni lni-user"></i>
+						  </div>
+						  <br>
+						  <div class="input-items disabled">
+							<label>:عنوان</label>
+						  <input name="title" class="form-control" id="exampleFormControlTextarea1" rows="3" dir="rtl" required>
+						  </div>
+						  <br>
+						  <br>
+						  <div class="input-items disabled">
+							<label>المشاركة</label>
+						  <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3" dir="rtl" required></textarea>
+						  </div>
+						 
+						</div>
+						
+					<!-- form input -->
+				 </div>
+				 <br><br> <br><br>
+
+			  </div>
+			  <!-- row -->
+
+		   <!-- form-style -->
+
+	  </section>
+
+	  <section id="createz" style="display: none;">
+		<div class="submit-container">
+		  <button  type="submit" style=" width: 40%;" class="btn btn-outline-dark">إنشاء</button>
+		</form>
+
+		</div>
+	  </section>
+	
+	</div>
+
+  <div
+    class="row container-fluid g-4 express-page-container"
+    dir="rtl"
+    style="margin: 0"
+  >
+    <div class="col-12 col-md-9">
+		<% expressions.forEach(function(express) { %>
+		
+		<div class="text-card">
+		
+        <div class="row text-card-container">
+		
+          <div class="col-2">
+		
+			<br>
+            <div class="image-container">
+				<% if(express.type == 'تجربة شخصيّة') { %>
+					<img
+					src="https://i.pinimg.com/564x/b9/03/4d/b9034dfbb8e2c0a431a896d2abb54c38.jpg"
+					alt="user-profile-image"
+					class="user-image"
+				  />
+					<% } if(express.type =='إقتراح') { %>
+						<img
+					src="https://i.pinimg.com/564x/a5/cd/a8/a5cda8b7d8ed0cf4379785e1a593f120.jpg"
+					alt="user-profile-image"
+					class="user-image"
+				  />
+				  <% } if(express.type =='إنتقاد') { %>
+					<img
+				src="https://i.pinimg.com/564x/1e/5d/6e/1e5d6e90a1fd0e1298eeec39d1a678d9.jpg"
+				alt="user-profile-image"
+				class="user-image"
+			  />
+			<% } %>
+            </div>
+          </div>
+		 
+          <div class="col-10">
+            <h4 class="text-card-title"><%= express.title %></h4>
+            <p>
+              <%= express.description %>
+            </p>
+			<p style="width: 100%; text-align: center;">
+				<%= express.type %>-<a href="/users/<%= express.username %>"><%= express.username %> </a>
+			</p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <div class="col-12 col-md-3 hashtags">
+      <h4 style="text-align: center">
+        مساحتك
+        <span> للتّعبير </span>
+        <br />
+        لا تكن مجرّد عابر سبيلل فقط
+        <br />
+        شاركنا بعضا من
+        <span> تجاربك </span>
+        كطالب مدرسة
+        <br />
+        أو ربّما
+        <span> آراءك </span>
+        حول القطاع التّعليمي
+        <br />
+        ربّما
+        <span> إقتراحات </span> لتحسين هذا القطاع؟
+        <br />
+        نعم أنت ،<span> بإنتظار مشاركتك </span>
+      </h4>
+    </div>
+  </div>
+  <%- include("./common/scripts.ejs") %>
+</body>
+
+<script>
+	document.getElementById('view').onclick = function() {
+	  document.getElementById('create').style.display = 'block';
+	  document.getElementById('createz').style.display = 'block';
+	  document.getElementById('view').style.display = 'none';
+	}
+
+  
+  </script>

@@ -1,0 +1,85 @@
+<%- include('./common/head2.ejs') %> <%- include('./common/nav.ejs') %>
+<link rel="stylesheet" href="/css/student-main.css" />
+<body>
+  <div class="main row">
+    <div class="col-md-6 lessons-container cardz">
+      <a href="/branches"
+        ><div class="lessons">
+          <div
+            class="font-animation"
+            style="
+              background-image: url('https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+            "
+          >
+            Lessons
+          </div>
+        </div></a
+      >
+    </div>
+    <div class="col-md-6 col-container">
+      <div class="dash-comm-teach-container cardz">
+        <a href="/dashboard"
+          ><div class="dashboard row">
+            <div
+              class="font-animation"
+              style="
+                background-image: url('https://images.pexels.com/photos/5408684/pexels-photo-5408684.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+              "
+            >
+              Dashboard
+            </div>
+          </div></a
+        >
+        <div class="community-teachers-container row">
+          <div class="community-container">
+            <a href="/community" class="teachers-card"
+              ><div class="community cardz">
+                <div
+                  class="font-animation"
+                  style="
+                    background-image: url('https://images.pexels.com/photos/7096/people-woman-coffee-meeting.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+                  "
+                >
+                  Community
+                </div>
+              </div></a
+            >
+          </div>
+          <div class="teachers-container cardz">
+            <a href="/teachers"
+              ><div class="teachers">
+                <div
+                  class="font-animation"
+                  style="
+                    background-image: url('https://images.pexels.com/photos/4144527/pexels-photo-4144527.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+                  "
+                >
+                  Teachers
+                </div>
+              </div></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    .font-animation {
+      background-position: center;
+      background-repeat: no-repeat;
+      box-shadow: inset 0 0 0 1000px rgba(8, 149, 101, 0.8);
+      height: 100%;
+      width: 100%;
+      transition: all 0.5s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+    }
+    .font-animation:hover {
+      color: #333333;
+      transform: scale(1.35) skewY(-10deg);
+    }
+  </style>
+</body>
+<%- include('./common/scripts.ejs') %>

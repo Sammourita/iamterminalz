@@ -1,0 +1,36 @@
+:root {
+	--bg-main: #e2e1e1;
+	--bg-sec: #89bfad75;
+	--default: #ffff;
+	--default-50: #ffffff66;
+	--text-main: #333333;
+	--text-sec: #05cb87;
+	--bg2: #05cb8694;
+	--text-tri: #ff014d;
+}
+.body {
+	background-image: url("../images/homebg.png");
+}
+.features-page-container {
+	padding: 0 12vw 4vw;
+	text-align: center;
+	color: var(--text-main);
+}
+.features-heading-one {
+	margin: auto;
+	width: 70%;
+}
+.features-heading-two {
+	margin: 20px auto;
+	width: 60%;
+	font-size: 20px;
+}
+.features-cards-container {
+	margin: 0;
+}
+.card-heading {
+	margin-top: 4vh;
+}
+.card-icon {
+	color: var(--text-sec);
+}

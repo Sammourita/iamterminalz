@@ -1,0 +1,239 @@
+<%- include('./common/head2'); -%> <%- include('./common/nav'); -%> <%-
+include('./common/push-down'); -%>
+    <h1
+      style="
+        text-align: center;
+        color: white;
+        padding: 10px;
+        text-shadow: 1px 2px #333333;
+        width: 100%;
+        background-color: #05cb87;
+        box-shadow: 4px 22px 33px -8px rgba(0,0,0,0.75);
+
+      "
+    >
+      أسئلة للإجابة عليها
+    </h1>
+    <% questions.forEach(function(question) { %>
+    <div class="card" data-aos="fade-up" data-aos-delay="200">
+      <div class="card-header">Asked By Student : <%= question.username %></div>
+      <% if( question.image != '') { %>
+      <div
+        class="cardimage"
+        style="background-image: url('/questions/<%= question.image %>')"
+      ></div>
+      <% } %>
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= question.lesson %>-<%= question.material %>-<%= question.branch %>
+        </h5>
+        <h1 class="card-text" style="color: #333333;"><%= question.question %></h1>
+
+        <br>
+        <%= question.answers.length %> answers
+        <div style=" width: 100%; text-align: center">
+          <% if (question.answers.length == 0) { %>
+            <h1 style="text-align: center; color: #333333;">لم تتمّ الإجابة بعد</h1>
+            <h5 style="text-align: center;">: أجب على السّؤال</h5>
+       
+          <form
+          class="form"
+          id="<%= question.id %>"
+          action="/<%= question.branch %>/<%= question.material %>/<%= question.lesson %>/<%= question.id %>/answer/postdouble"
+          enctype="multipart/form-data"
+          method="post";
+        >
+          <input type="text" name="answer" required />
+          <input type="file" name="myImage"  />
+          <br>
+          <button type="submit" class="btn btn-outline-dark" style="margin: 5px">
+            أرسل الإجابة
+          </button>
+          
+        </form>
+        <br>
+        <a target="_blank" style="margin-left: 0%;" href="/<%= question.branch %>/<%= question.material %>/<%= question.lesson %>/viewquestion/<%= question.id %>" class="btn btn-outline-dark" >إفتح السّؤال في صفحة منفصلة</a> 
+          <% } %>
+          
+          <% if (question.answers.length > 0) { %>
+          
+            <h1 style="text-align: center; color: #333333;">تصفّح الأجوبة</h1>
+            <svg class="arrows arrowup" id="viewallanswers<%= question.id %>" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+            </svg>
+            <svg class="arrowdown" style="display: none;" id="hideallanswers<%= question.id %>" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+            </svg>
+            <br>
+          <% } %>
+                      <div id="allanswers<%= question.id %>" style="display: none;"> 
+
+          <% for(var i=0; i < question.answers.length ; i++) {%>
+            <div style="width: 100%; background-color: #05CB87; margin: 5px; border-radius: 20px; padding: 5px;">
+            <h3>
+            <p1>Answered By: <%= question.answers[i].username %>:</p1> <br>
+            <%= question.answers[i].answer %> <% if( question.answers[i].image
+            != '') { %>
+            </h3>
+
+            <div style="width: 100%;" >
+              <div
+                class="answerimage"
+                style="
+                  background-image: url('/questions/<%= question.answers[i].image %>');
+                "
+              ></div>
+            </div>
+            
+            <% } %>
+          </div>
+          <% } %>
+        </div>
+        <% if (question.answers.length > 0) { %>
+        <button class="btn btn-outline-dark" id="<%= question.id %>" style="width: 40%; margin: 5px;">
+          أجب
+        </button>
+        <br>
+        <a target="_blank" style="margin-left: 0%;" href="/<%= question.branch %>/<%= question.material %>/<%= question.lesson %>/viewquestion/<%= question.id %>" class="btn btn-outline-dark" >إفتح السّؤال في صفحة منفصلة</a> 
+        <% } %>
+        </div>
+
+
+          <div
+            class="answer"
+            id="<%= question.id %>answer"
+            style="display: none"
+          >
+            <form
+              class="form"
+              id="<%= question.id %>doublez"
+              action="/<%= question.branch %>/<%= question.material %>/<%= question.lesson %>/<%= question.id %>/answer/postdouble"
+              enctype="multipart/form-data"
+              method="post"
+            >
+              <input type="text" name="answer" required />
+              <input type="file" name="myImage"  />
+              <button type="submit" class="btn btn-outline-dark" style="margin: 5px">
+                أرسل الإجابة
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById('viewallanswers<%= question.id %>').onclick = function() {
+      document.getElementById('allanswers<%= question.id %>').style.display = 'block';
+      document.getElementById('hideallanswers<%= question.id %>').style.display = 'block';
+      document.getElementById('viewallanswers<%= question.id %>').style.display = 'none';
+      
+    }
+      document.getElementById('hideallanswers<%= question.id %>').onclick = function() {
+      document.getElementById('allanswers<%= question.id %>').style.display = 'none';
+      document.getElementById('viewallanswers<%= question.id %>').style.display = 'block';
+      document.getElementById('hideallanswers<%= question.id %>').style.display = 'none';
+      
+    }
+      document.getElementById("<%= question.id %>").onclick = function () {
+        document.getElementById("<%=question.id %>answer").style.display =
+          "block";
+        document.getElementById("<%= question.id %>").style.display = "none";
+        
+      };
+      document.getElementById("<%= question.id %>double").onclick =
+        function () {
+          document.getElementById("<%= question.id %>doublez").style.display =
+            "block";
+          document.getElementById("<%= question.id %>double").style.display =
+            "none";
+          document.getElementById("<%= question.id %>single").style.display =
+            "none";
+        };
+      document.getElementById("<%= question.id %>single").onclick =
+        function () {
+          document.getElementById("<%= question.id %>singlez").style.display =
+            "block";
+          document.getElementById("<%= question.id %>double").style.display =
+            "none";
+          document.getElementById("<%= question.id %>single").style.display =
+            "none";
+        };
+    </script>
+    <% }) %>
+  </body>
+  <style>
+    .answer {
+      height: 10vh;
+      display: flex;
+      align-items: center;
+    }
+    .card {
+      height: max-content;
+      padding-bottom: 2vh;
+      width: 90%;
+      border-radius: 20px;
+      margin: 5%;
+      z-index: 0;
+      box-shadow: 4px 22px 47px -13px rgba(0,0,0,0.75);
+
+    }
+    .cardimage {
+      height: 50vh;
+      width: 100%;
+      border-radius: 0px 0px 20px 20px;
+      background-size: cover;
+      background-position: top;
+    }
+    .card-title {
+      color: rgb(255, 1, 77);
+    }
+    .card-body {
+      height: max-content;
+      padding-bottom: 5vh;
+    }
+  
+    .choice {
+      width: 30vw;
+      height: 20vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      margin: 5px;
+      border-radius: 20px;
+      background-color: black;
+      color: white;
+    }
+    .askquestioninput {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .form {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .answerimage {
+      height: 50vh;
+      width: 60%;
+      margin-left: 20%;
+      margin-bottom: 5px;
+      border-radius: 20px;
+      background-size: cover;
+      background-position: top;
+    }
+    .arrowdown {
+      width: 50%;
+      margin-left: 25%;
+    }
+    .arrowup {
+      width: 50%;
+      margin-left: 25%;
+    }
+  </style>
+  <script>
+  
+  </script>
+</html>

@@ -1,0 +1,216 @@
+.main {
+  width: 90%;
+  height: 80vh;
+  margin-left: 5%;
+  display: flex;
+}
+
+.cardprofile {
+  width: 60%;
+  height: 90%;
+  margin-left: 15%;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 1px 1px 33px 8px rgba(0, 0, 0, 0.58);
+  -webkit-box-shadow: 1px 1px 33px 8px rgba(0, 0, 0, 0.58);
+  -moz-box-shadow: 1px 1px 33px 8px rgba(0, 0, 0, 0.58);
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.teacherimage {
+  width: 100%;
+  height: 63vh;
+  transition: 0.5s all ease;
+  overflow: hidden;
+}
+
+.teacherprofile {
+  width: 100%;
+  height: 63vh;
+  background: linear-gradient(#01432c5d, transparent, #05cb8691),
+    url(https://i.pinimg.com/564x/b8/7c/71/b87c7145d5a4fd5e8dfb22c4d20d356b.jpg);
+  background-position: center;
+  background-size: cover;
+  transition: 0.5s all ease;
+  box-shadow: -4px -49px 117px -12px rgba(0, 0, 0, 0.65) inset;
+  -webkit-box-shadow: -4px -49px 117px -12px rgba(0, 0, 0, 0.65) inset;
+  -moz-box-shadow: -4px -49px 117px -12px rgba(0, 0, 0, 0.65) inset;
+}
+
+.teacherprofile:hover {
+  transform: scale(1.2) skewY(-2deg);
+  box-shadow: -4px -84px 96px 53px rgba(0, 0, 0, 0.65) inset;
+  -webkit-box-shadow: -4px -84px 96px 53px rgba(0, 0, 0, 0.65) inset;
+  -moz-box-shadow: -4px -84px 96px 53px rgba(0, 0, 0, 0.65) inset;
+}
+
+.teacherdescription {
+  position: static;
+  border-radius: 0 0 20px 20px;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  height: 10vh;
+  overflow: hidden;
+}
+
+.community {
+  background-image: url("https://i.pinimg.com/736x/10/2b/ce/102bce3530d13cc24a522df1b96c8af9.jpg");
+  box-shadow: inset 0 0 0 1000px rgba(8, 149, 101, 0.8);
+  right: 0;
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s all ease;
+}
+
+.cardcommunityquestions {
+  width: 80%;
+  height: 80%;
+  margin-right: 15%;
+  border-radius: 20px;
+  background-size: cover;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 1px 2px 2px #000;
+  box-shadow: 1px 1px 33px 8px rgba(0, 0, 0, 0.58);
+  -webkit-box-shadow: 1px 1px 33px 8px rgba(0, 0, 0, 0.58);
+  -moz-box-shadow: 1px 1px 33px 8px rgba(0, 0, 0, 0.58);
+}
+
+.questionsbackground {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  background-size: cover;
+}
+
+.profile {
+  width: 60%;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+
+.questions {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.questionz {
+  background-image: url("https://i.pinimg.com/564x/da/f0/37/daf0378cacfa0456fa692afe032c4b88.jpg");
+  box-shadow: inset 0 0 0 1000px rgba(8, 149, 101, 0.8);
+  transition: 0.5s all ease;
+}
+.questionz:hover {
+  transform: scale(1.2);
+}
+.community:hover {
+  transform: scale(1.2);
+}
+.right {
+  z-index: 0;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+p {
+  text-align: center;
+}
+
+h1 {
+  margin-top: -7%;
+  text-align: center;
+  color: #05cb87;
+}
+
+@media only screen and (max-width: 650px) {
+  .main {
+    width: 90%;
+    margin-left: 0;
+    height: 80vh;
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .teacherimage {
+    width: 100%;
+    height: 38vh;
+    transition: 0.5s all ease;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  .profile {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cardprofile {
+    width: 100%;
+    height: 90%;
+    margin-left: 15%;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 1px 1px 33px 8px rgba(0, 0, 0, 0.58);
+    -webkit-box-shadow: 1px 1px 33px 8px rgba(0, 0, 0, 0.58);
+    -moz-box-shadow: 1px 1px 33px 8px rgba(0, 0, 0, 0.58);
+    transition: all 0.5s ease;
+    overflow: hidden;
+    justify-content: center;
+  }
+
+  .teacherdescription {
+    border-radius: 0 0 20px 20px;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    height: 10vh;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .cardcommunityquestions {
+    width: 100%;
+    height: 80%;
+    border-radius: 20px;
+    background-size: cover;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 1px 2px 2px #000;
+    box-shadow: 1px 1px 33px 8px rgba(0, 0, 0, 0.58);
+    -webkit-box-shadow: 1px 1px 33px 8px rgba(0, 0, 0, 0.58);
+    -moz-box-shadow: 1px 1px 33px 8px rgba(0, 0, 0, 0.58);
+    margin: 5px;
+  }
+
+  .right {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+}

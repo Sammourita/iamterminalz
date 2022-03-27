@@ -1,0 +1,274 @@
+<%- include('./common/head2'); -%> <%- include('./common/nav'); -%> <%-
+include('./common/push-down'); -%>
+<div style="margin-top: 20vh;"></div>
+
+<div class="askspace">
+<form class="form" action="/<%= branch %>/<%= material %>/<%= lesson %>/questions/post" method="post" enctype="multipart/form-data" id="doublez">
+  <div id="collapseaskingspace">
+  <h1 style="text-align: center; color: #05cb87;" >
+    <i style="color: #05cb87;" class="fa-solid fa-arrow-down"></i>  إسأل سؤالًا 
+  </h1>
+  <div></div>
+  <div></div>
+  <div class="askingspace" id="askingspace">
+    <label style="text-align: center;" for="question">نصّ السّؤال</label>
+    <textarea class="askquestioninput"  placeholder="السّؤال" name="question" id="question" onkeyup="this.value = this.value.replace(/[&*<>,?]/g, '')" required></textarea>
+<div></div>
+<div></div>
+<label style="text-align: center;" for="files">....إختر صورة إن أردت-صورة السّؤال-صورة توضيية</label>
+<input placeholder="إرفع صورة إن أردت للتّوضيح" id="files" class="inputfileupload" type="file" name="myImage">
+<div></div>
+<div></div>
+<button class="buttonsubmit" type="submit" id="submit">إسأل</button>
+</div>
+</div>
+</form>
+<script>
+    document.getElementById('question').onmouseout = function() {
+				let questionz = document.getElementById('question');
+				if(username.value.includes('?')) {
+					questionz.value = '';
+					document.forms["/<%= branch %>/<%= material %>/<%= lesson %>/questions/post"].submit() = false;
+
+				}
+				else {
+				}
+			}
+</script>
+</div>
+</div>
+<script>
+  const questionz = document.getElementById('question');
+  
+  questionz.onmouseenter = function() {
+    var newurl = '/<%= branch %>/<%= material %>/<%= lesson %>/questions/';
+                window.history.pushState({path:newurl},'',newurl);
+  }
+  document.getElementById('doublez').onclick = function() {
+    document.getElementById('askingspace').style.transition = 'all .5s ease';
+    document.getElementById('askingspace').style.display = 'block';
+    document.getElementById('doublez').action = `/<%= branch %>/<%= material %>/<%= lesson %>/questions/${questionz.value}/post`;
+  }
+
+</script> 
+<% questions.forEach(function(question) { %>
+        <div class="card">
+         
+            <% if( question.image != '') { %>
+              <div class="cardimage" style="background-image: url('/questions/<%= question.image %>');" ></div>
+            <% } %>
+            <div class="card-body">
+              <% if(question.answers.length != 0) { %>
+                <h5 class="card-title answered">تمّت الإجابة</h5>
+              <% } else { %>
+                <h5 class="card-title notanswered">لم تتمّ الإجابة بعد الإجابة</h5>
+
+                <% } %>
+          
+              <h1 class="card-text" style="color: #333333;"><%= question.question %> </h1>
+              <a  target="_blank" href="/<%= branch %>/<%= material %>/<%= lesson %>/viewquestion/<%= question.id %>" class="btn btn-outline-dark" >إفتح السّؤال في صفحة منفصلة</a>
+              <% if(question.answers.length == 0) { %>
+                <button class="btn btn-outline-dark" id="<%= question.id %>answerr">أجب على السّؤال</button>
+                <form id="<%= question.id %>formz" action="/<%= branch %>/<%= material %>/<%= lesson %>/<%= question.id %>/answer/post" style="display: none;" method="post">
+                  <textarea  style="width: 100%; margin-top: 10px;" placeholder="أجبه" type="text" name="answer" required></textarea>
+                  <button type="submit" class="btn" style="margin: 5px; color: rgb(255, 1, 77); background-color: none; border:2px solid rgb(255, 1, 77); outline: none;">أجب على السّؤال</button>
+                </form>
+                <% } %>
+              <% if(question.answers.length != 0) { %>
+              <svg id="<%= question.id %>viewanswers" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+              </svg>
+
+                <svg id="<%= question.id %>hideanswers" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                  <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                </svg>
+                
+            <form id="<%= question.id %>form" action="/<%= branch %>/<%= material %>/<%= lesson %>/<%= question.id %>/answer/post" style="display: none;" method="post">
+              <textarea style="width: 100%; margin-top: 10px;" placeholder="أجب على السّؤال" type="text" name="answer" required></textarea>
+              <button type="submit" class="btn" style="margin: 5px; color: #05cb87; background-color: none; border:2px solid #05cb87; outline: none;">أجب على السّؤال</button>
+            </form>
+            <% } else { %>
+              <% } %>
+              <div class="answers" id="<%=question.id %>answers">
+                <h1 style="text-align: center; font-size: 25px;">
+                  الأجوبة
+                </h1>
+              <% for(var i=0; i < question.answers.length  ; i++) {%>
+                <div style="width: 100%; background-color: #05CB87; margin: 5px; border-radius: 20px; padding: 5px;">
+                  <h3>
+                  <h3 style="text-align: center;">Answered By: <%= question.answers[i].username %>:</h3> 
+                  <% if( question.answers[i].image
+                  != '') { %>
+                  <img class="answerimage" src="/questions/<%= question.answers[i].image %>" alt="">
+                  <br>
+                  <% } %>
+
+                  <h2 style="text-align: center;">
+                  <%= question.answers[i].answer %> 
+                </h2>
+                
+                  </h3>
+      
+                  
+                  
+                </div>
+             
+                <% } %>
+
+              </div>
+
+
+              
+              <div class="answer" id="<%= question.id %>answer" style="display: none;">
+                <form action="/<%= branch %>/<%= material %>/<%= lesson %>/<%= question.id %>/answer/post" method="post">
+                  <input type="text" name="answer" >
+                </form>
+              </div>
+            </div>
+          </div>
+          <script>
+                document.getElementById('<%= question.id %>answerr').onclick = function() {
+                  console.log('test')
+                  document.getElementById('<%= question.id %>formz').style.display = 'block';
+              
+              }
+          </script>
+          <script>
+            
+               document.getElementById('<%= question.id %>viewanswers').onclick = function() {
+                document.getElementById('<%=question.id %>answers').style.display = 'block';
+                document.getElementById('<%= question.id %>hideanswers').style.display = 'block';
+                document.getElementById('<%= question.id %>form').style.display = 'block';
+                document.getElementById('<%= question.id %>viewanswers').style.display = 'none';
+                console.log('resr')
+              }
+              document.getElementById('<%= question.id %>hideanswers').onclick = function() {
+                document.getElementById('<%=question.id %>answers').style.display = 'none';
+                document.getElementById('<%= question.id %>hideanswers').style.display = 'none';
+                document.getElementById('<%= question.id %>form').style.display = 'none';
+                document.getElementById('<%= question.id %>viewanswers').style.display = 'block';
+              }
+         
+           
+              
+          </script>
+    <% }) %>
+<style>
+    .answer {
+        height: 10vh;
+        display: flex;
+        align-items: center;
+    }
+    body {
+      background-image: url("../images/homebg.png");
+
+    }
+    .card {
+      width: 90%;
+      border-radius: 20px;
+        margin: 5%;
+        z-index: 0;
+        box-shadow: 4px 22px 47px -13px rgba(0,0,0,0.75);
+    
+}
+    .answers {
+      display: none;
+    }
+    .answered {
+      font-size: 18px;
+      color: #05cb87
+    }
+    .notanswered {
+      color: rgb(255, 1, 77);
+    }
+    svg {
+      position: absolute;
+      right: 5%;
+      bottom: 5%;
+    }
+    .cardimage {
+                 height: 50vh;
+                 width: 100%;
+                 border-radius: 20px;
+               background-size: cover;
+               background-position: top;
+    }
+  
+    .hideanswers {
+      display: none;
+    }
+    .choice {
+      width: 30vw;
+      height: 20vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      margin: 5px;
+      border-radius: 20px;
+      background-color: black;
+      color: white;
+    }
+   .askspace {
+     margin-top: -10%;
+     width: 90%;
+     margin-left: 5%;
+     border-radius: 20px;
+     box-shadow: 0px 0px 15px black;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: center;
+     padding-top: 10px;
+     padding-bottom: 10px;
+   }
+   .inputfileupload {
+     width: 100%;
+     text-align: center;
+     margin-bottom: 10px;
+   }
+   .askquestioninput {
+     width: 100%;
+     margin-bottom: 10px;
+   }
+   .answerimage {
+     width: 90%;
+     margin-left: 5%;
+   }
+   .buttonsubmit {
+     width: 13vh;
+     height: 5vh;
+     background-color: #05cb87;
+    color: white;
+    box-shadow: 0px 0px 10px black;
+     border: 2px solid #05cb87;
+     border-radius: 20px;
+   }
+   .form {
+     width: 70%;
+   }
+   .askingspace {
+    transition: height 0ms 0ms, opacity 600ms 0ms;
+
+     display: none;
+   }
+</style>
+<script>
+  document.getElementById('double').onclick = function() {
+    document.getElementById('doublez').style.display = 'block';
+    document.getElementById('double').style.display = 'none';
+    document.getElementById('single').style.display = 'none';
+  }
+  document.getElementById('single').onclick = function() {
+    document.getElementById('singlez').style.display = 'block';
+    document.getElementById('double').style.display = 'none';
+    document.getElementById('single').style.display = 'none';
+  }
+</script>
+<script>
+
+    document.getElementById('collapseaskingspace').onclick = function() {
+      console.log('ash')
+   
+    }
+</script>
